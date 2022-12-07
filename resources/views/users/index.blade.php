@@ -240,6 +240,7 @@
         showModal('user-edit')
     }
 
+    
     function fetchUserClients(id) {
 
         fetch('/users/clientes/' + id)
