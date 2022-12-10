@@ -58,7 +58,7 @@ class User extends Authenticatable
     }
     public function clientes()
     {
-        return $this->hasMany(client_bots::class);
+        return $this->belongsToMany(client_bots::class);
     }
     public function clients_per_game()
     {

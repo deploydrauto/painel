@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/webhooks/{id}', [UserManagement::class, 'destroy'])->name('users.destroy');
     Route::get('/users/clientes/{id}', [UserManagement::class, 'clientes'])->name('users.clientes');
 
-
+    Route::post('/client/new', [ClientBotsController::class, 'store'])->name('client.store');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
