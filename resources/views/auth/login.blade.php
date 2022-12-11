@@ -1,9 +1,8 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+           <img src="https://fabricioalves.me/wp-content/uploads/2020/02/cropped-FABRICIOALVES.ME-300x42-2-300x38.png">
+           
         </x-slot>
 
         <!-- Session Status -->
