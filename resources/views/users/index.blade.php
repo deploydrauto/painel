@@ -24,18 +24,19 @@
             display: none;
             background-color: white;
         }
-        .modal {
-      transition: opacity 0.25s ease;
-    }
-    body.modal-active {
-      overflow-x: hidden;
-      overflow-y: visible !important;
-    }
 
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+
+        body.modal-active {
+            overflow-x: hidden;
+            overflow-y: visible !important;
+        }
     </style>
     <x-slot name="header">
         <div class="flex justify-end">
-            <x-primary-button onclick="showModal('user-create')">{{ __('+ Adicionar') }}
+            <x-primary-button  data-bs-toggle="modal" data-bs-target="#user_add_modal" >{{ __('+ Adicionar') }}
             </x-primary-button>
         </div>
 
@@ -80,12 +81,12 @@
                                         <td
                                             class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             <p>
-                                                <x-primary-button onClick="fetchUserClients({{ $user->id }})"
+                                                <x-primary-button  data-bs-toggle="modal" data-bs-target="#exampleModalXl" onClick="fetchUserClients({{ $user->id }})"
                                                     class="mt-1">Clientes: {{ $user->clientes }}
                                                 </x-primary-button>
                                             </p>
                                             <p>
-                                                <x-primary-button class="mt-1"> Games : {{ $user->games }}
+                                                <x-primary-button class="mt-1"  data-bs-toggle="modal" data-bs-target="#users_games"> Games : {{ $user->games }}
                                                 </x-primary-button>
                                             </p>
                                             <p>
@@ -108,58 +109,121 @@
 
     </div>
 
-
-    @include('modals.clientes_user')
-
-    @include('modals.client_add')
-
-    @include('modals.user_add')
-
-    @include('modals.user_edit')
+    @include('modals.user_add');
+    @include('modals.clientes_user');
+    @include('modals.games_user');
 
 
 
 
+    {{-- <x-bladewind.modal name="user-create" title="Cadastrar Novo" size="big" id="" ok_button_label=""
+        cancel_button_label="">
+        <form method="POST" action="{{ route('users.store') }}">
+            @csrf
 
+            <!-- Name -->
+            <div>
+                <x-input-label for="name" :value="__('Name')" />
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                    :value="old('name')" required autofocus />
+                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            </div>
+
+            <!-- Email Address -->
+            <div class="mt-4">
+                <x-input-label for="email" :value="__('Email')" />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                    :value="old('email')" required />
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            </div>
+
+            <!-- Password -->
+            <div class="mt-4">
+                <x-input-label for="password" :value="__('Password')" />
+
+                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                    autocomplete="new-password" />
+
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mt-4">
+                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                    name="password_confirmation" required />
+
+                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+
+
+                <x-primary-button class="ml-4">
+                    {{ __('Register') }}
+                </x-primary-button>
+            </div>
+        </form>
+    </x-bladewind.modal> --}}
+
+    {{-- <x-bladewind.modal name="user-edit" title="Editar Usuario" size="big" id="" ok_button_label=""
+        cancel_button_label="">
+        <form id="user-edit-form" method="POST" action="{{ route('users.edit', [$user->id]) }}">
+            @csrf
+
+            <!-- Name -->
+            <div>
+                <x-input-label for="name" :value="__('Name')" />
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                    :value="old('name')" required autofocus />
+                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            </div>
+
+            <!-- Email Address -->
+            <div class="mt-4">
+                <x-input-label for="email" :value="__('Email')" />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                    :value="old('email')" required />
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            </div>
+
+            <!-- Password -->
+            <div class="mt-4">
+                <x-input-label for="password" :value="__('Password')" />
+
+                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                    autocomplete="new-password" />
+
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mt-4">
+                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                    name="password_confirmation" required />
+
+                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+
+
+                <x-primary-button class="ml-4">
+                    {{ __('Register') }}
+                </x-primary-button>
+            </div>
+        </form>
+    </x-bladewind.modal> --}}
 
 </x-app-layout>
+
 <script>
-    let modal = document.getElementById("modal");
-
-    function modalHandler(val) {
-        if (val) {
-            fadeIn(modal);
-        } else {
-            fadeOut(modal);
-        }
-    }
-
-    function fadeOut(el) {
-        el.style.opacity = 1;
-        (function fade() {
-            if ((el.style.opacity -= 0.1) < 0) {
-                el.style.display = "none";
-            } else {
-                requestAnimationFrame(fade);
-            }
-        })();
-    }
-
-    function fadeIn(el, display) {
-        el.style.opacity = 0;
-        el.style.display = display || "flex";
-        (function fade() {
-            let val = parseFloat(el.style.opacity);
-            if (!((val += 0.2) > 1)) {
-                el.style.opacity = val;
-                requestAnimationFrame(fade);
-            }
-        })();
-    }
-</script>
-<script>
-    // display modal
-    function fetchGames(id) {
+    function loadModal() {
+        // showModal('user_add')
+        console.log(document.querySelectorAll('user_add'))
 
     }
     // replace action of form
@@ -180,7 +244,31 @@
         showModal('user-edit')
     }
 
+    function storeClient() {
 
+        let form = document.getElementById('client-form');
+
+
+        let formData = new FormData();
+        formData.body
+        let url = '/client/new';
+        let method = 'POST';
+        let data = {
+            _token: '{{ csrf_token() }}',
+            method: method,
+            body: formData
+        }
+        fetch(url, data)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.status == 'success') {
+                    alert('Cliente cadastrado com sucesso');
+                    form.reset();
+                    // hideModal('client');
+                }
+            });
+    }
 
     // store client with json in /client/new post method
     function storeClientJson() {
@@ -238,49 +326,6 @@
                     `;
                     table.appendChild(row);
                 });
-                showModal('xl-modal')
             });
     }
 </script>
-
-<script>
-    var openmodal = document.querySelectorAll('.modal-open')
-    for (var i = 0; i < openmodal.length; i++) {
-      openmodal[i].addEventListener('click', function(event){
-    	event.preventDefault()
-    	toggleModal()
-      })
-    }
-
-    const overlay = document.querySelector('.modal-overlay')
-    overlay.addEventListener('click', toggleModal)
-
-    var closemodal = document.querySelectorAll('.modal-close')
-    for (var i = 0; i < closemodal.length; i++) {
-      closemodal[i].addEventListener('click', toggleModal)
-    }
-
-    document.onkeydown = function(evt) {
-      evt = evt || window.event
-      var isEscape = false
-      if ("key" in evt) {
-    	isEscape = (evt.key === "Escape" || evt.key === "Esc")
-      } else {
-    	isEscape = (evt.keyCode === 27)
-      }
-      if (isEscape && document.body.classList.contains('modal-active')) {
-    	toggleModal()
-      }
-    };
-
-
-    function toggleModal () {
-      const body = document.querySelector('body')
-      const modal = document.querySelector('.modal')
-      modal.classList.toggle('opacity-0')
-      modal.classList.toggle('pointer-events-none')
-      body.classList.toggle('modal-active')
-    }
-
-
-  </script>
