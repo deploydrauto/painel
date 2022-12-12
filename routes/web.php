@@ -48,8 +48,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/users/update/{id}', [UserManagement::class, 'update'])->name('users.update');
     Route::post('/users/delete/{id}', [UserManagement::class, 'delete'])->name('users.delete');
     Route::get('/users/games/{id}', [UserManagement::class, 'destroy'])->name('users.destroy');
-    Route::get('/users/webhooks/{id}', [UserManagement::class, 'destroy'])->name('users.destroy');
     Route::get('/users/clientes/{id}', [UserManagement::class, 'clientes'])->name('users.clientes');
+
+    Route::get('/user/bots/{id}', [UserManagement::class, 'games'])->name('user.bots');
+    Route::get('/user/nogameuser/{id}', [UserManagement::class, 'getGamesofUserNoHave'])->name('user.games.nobots');
+    Route::get('/user/gamesuser/{id}', [UserManagement::class, 'games'])->name('user.games.bots');
+    Route::post('/user/storegametouser', [UserManagement::class, 'storeGameToUser'])->name('user.games.store');
+    Route::post('/user/deletegameuser/{id}', [UserManagement::class, 'deleteGameToUser'])->name('user.games.delete');
+
+
+
+    Route::get('/user/webhooks/{id}', [UserManagement::class, 'getWebHooks'])->name('user.webhooks');
+    Route::post('/user/webhooks/store', [UserManagement::class, 'storeWebHook'])->name('user.webhook.store');
+    Route::post('/user/webhook/delete/{id}', [UserManagement::class, 'deleteWebHook'])->name('user.webhook.delete');
+
 
     Route::post('/client/new', [ClientBotsController::class, 'store'])->name('client.store');
 

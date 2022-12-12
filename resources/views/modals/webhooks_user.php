@@ -1,20 +1,30 @@
   <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-      name="xl-modal" id="users_games" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
+      name="xl-modal" id="webhooks_modal" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
       <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
           <div
               class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
               <div
                   class="modal-header flex flex-end items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
                   <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalXlLabel">
-                      Gerenciar Games do Cliente
+                     Gerenciar webooks
                   </h5>
                   <div class="self-end   pl-40">
                       <p>
-                          <select id="game_no_have">
+                          <select id="games_list">
                               <option value="null" selected disabled>Selecione</option>
                           </select>
+                          <select id="methodos">
+                              <option value="null" selected disabled>Selecione</option>
+                              <option value="kiwify" selected >kiwify</option>
+                              <option value="doppus" selected >doppus</option>
+                              <option value="braip" selected >braip</option>
+                              <option value="eduzz" selected >eduzz</option>
+                              <option value="mercadopago" selected >mercadopago</option>
+                              <option value="paypal" selected >paypal</option>
+
+                          </select>
                           <a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5"
-                              role="button" onclick="storeGameUser()">
+                              role="button" onclick="storeWebhook()">
                               Adicionar
                           </a>
                       </p>
@@ -35,7 +45,15 @@
                               </th>
                               <th scope="col"
                                   class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                  Name BOTGAME
+                                 Methodo
+                              </th>
+                                 <th scope="col"
+                                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                 game
+                              </th>
+                              <th scope="col"
+                                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                 URL WEBHOOK
                               </th>
                               <th scope="col"
                                   class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
@@ -46,7 +64,7 @@
                           <tr>
                       </thead>
                       <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
-                          id="games-user-table">
+                          id="webhooks-table">
                       </tbody>
                   </table>
               </div>
