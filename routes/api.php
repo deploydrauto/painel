@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\ClienteController;
+use App\Http\Controllers\WebhooksController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,6 @@ Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::any('/{method}/{game}/{iduser}', [WebhooksController::class, 'index'])->name('webhooks.index');
+
