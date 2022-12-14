@@ -19,13 +19,16 @@
                     <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
                         {{ __('Clientes') }}
                     </x-nav-link>
+                    @can('admin')
                     <x-nav-link :href="route('games.index')" :active="request()->routeIs('games.index')">
                         {{ __('Games') }}
                     </x-nav-link>
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Usuarios') }}
                     </x-nav-link>
-                    
+                    @endcan
+
+
                 </div>
             </div>
 

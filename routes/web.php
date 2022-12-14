@@ -33,7 +33,7 @@ Route::get('/', function () {
 
 Route::resource('games', GameBotsController::class)
     ->only(['index', 'store'])
-    ->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified' , 'can:admin']);
 
 // Route::resource('users', UserManagement::class)
 //     ->only(['index', 'store'])
@@ -44,7 +44,7 @@ Route::resource('clientes', ClientBotsController::class)
     ->middleware(['auth', 'verified']);
 Route::middleware('auth')->group(function () {
 
-    Route::get('/users', [UserManagement::class, 'index'])->name('users.index');
+    Route::get('/users', [UserManagement::class, 'index'])->middleware('can:admin')->name('users.index');
     Route::post('/users', [UserManagement::class, 'store'])->name('users.store');
     Route::post('/users/edit/{id}', [UserManagement::class, 'edit'])->name('users.edit');
     Route::get('/users/show/{id}', [UserManagement::class, 'show'])->name('users.show');
@@ -53,11 +53,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/games/{id}', [UserManagement::class, 'destroy'])->name('users.destroy');
     Route::get('/users/clientes/{id}', [UserManagement::class, 'clientes'])->name('users.clientes');
 
-    Route::get('/user/bots/{id}', [UserManagement::class, 'games'])->name('user.bots');
-    Route::get('/user/nogameuser/{id}', [UserManagement::class, 'getGamesofUserNoHave'])->name('user.games.nobots');
-    Route::get('/user/gamesuser/{id}', [UserManagement::class, 'games'])->name('user.games.bots');
-    Route::post('/user/storegametouser', [UserManagement::class, 'storeGameToUser'])->name('user.games.store');
-    Route::post('/user/deletegameuser/{id}', [UserManagement::class, 'deleteGameToUser'])->name('user.games.delete');
+    Route::get('/user/bots/{id}', [UserManagement::class, 'games'])->middleware('can:admin')->name('user.bots');
+    Route::get('/user/nogameuser/{id}', [UserManagement::class, 'getGamesofUserNoHave'])->middleware('can:admin')->name('user.games.nobots');
+    Route::get('/user/gamesuser/{id}', [UserManagement::class, 'games'])->middleware('can:admin')->name('user.games.bots');
+    Route::post('/user/storegametouser', [UserManagement::class, 'storeGameToUser'])->middleware('can:admin')->name('user.games.store');
+    Route::post('/user/deletegameuser/{id}', [UserManagement::class, 'deleteGameToUser'])->middleware('can:admin')->name('user.games.delete');
 
 
 
