@@ -119,17 +119,24 @@
         labels: {!!json_encode($graphic_label, JSON_UNESCAPED_UNICODE)!!},
         datasets: [{
           label: 'Usuarios Por Bot',
+          color: 'blue',
+          backgroundColor: 'blue',
           data: {!!  json_encode($graphic_value, JSON_UNESCAPED_UNICODE)!!},
           borderWidth: 1
         },
         {
           label: 'Usuarios Ativos por Bot',
+          color: 'green',
+            backgroundColor: 'green',
           data: {!!  json_encode($grapnic_value_ative, JSON_UNESCAPED_UNICODE)!!},
           borderWidth: 1
         }
         {
           label: 'Usuarios Inativos por Bot',
           data: {!!  json_encode($grapnic_value_inative, JSON_UNESCAPED_UNICODE)!!},
+          color: 'red',
+            backgroundColor: 'red',
+
           borderWidth: 1
         }]
       },
