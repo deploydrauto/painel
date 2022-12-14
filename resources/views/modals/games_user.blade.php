@@ -10,6 +10,7 @@
                   </h5>
                   <div class="self-end   pl-40">
                       <p>
+                        @can('admin')
                           <select id="game_no_have">
                               <option value="null" selected disabled>Selecione</option>
                           </select>
@@ -17,6 +18,7 @@
                               role="button" onclick="storeGameUser()">
                               Adicionar
                           </a>
+                          @endcan
                       </p>
                   </div>
 

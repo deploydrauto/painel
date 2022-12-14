@@ -54,8 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/clientes/{id}', [UserManagement::class, 'clientes'])->name('users.clientes');
 
     Route::get('/user/bots/{id}', [UserManagement::class, 'games'])->middleware('can:admin')->name('user.bots');
-    Route::get('/user/nogameuser/{id}', [UserManagement::class, 'getGamesofUserNoHave'])->middleware('can:admin')->name('user.games.nobots');
-    Route::get('/user/gamesuser/{id}', [UserManagement::class, 'games'])->middleware('can:admin')->name('user.games.bots');
+    Route::get('/user/nogameuser/{id}', [UserManagement::class, 'getGamesofUserNoHave'])->name('user.games.nobots');
+    Route::get('/user/gamesuser/{id}', [UserManagement::class, 'games'])->name('user.games.bots');
     Route::post('/user/storegametouser', [UserManagement::class, 'storeGameToUser'])->middleware('can:admin')->name('user.games.store');
     Route::post('/user/deletegameuser/{id}', [UserManagement::class, 'deleteGameToUser'])->middleware('can:admin')->name('user.games.delete');
 
