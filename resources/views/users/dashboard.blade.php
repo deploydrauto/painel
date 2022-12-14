@@ -128,7 +128,7 @@
         {
           label: 'Usuarios Ativos por Bot',
           color: 'green',
-            backgroundColor: 'green',
+            backgroundColor: rgba(104,195,111,0.7),
           data: {!!  json_encode($grapnic_value_ative, JSON_UNESCAPED_UNICODE)!!},
           borderWidth: 1
         },
@@ -136,7 +136,7 @@
           label: 'Usuarios Inativos por Bot',
           data: {!!  json_encode($grapnic_value_inative, JSON_UNESCAPED_UNICODE)!!},
           color: 'red',
-            backgroundColor: 'red',
+            backgroundColor: rgba(241,50,16,0.7),
 
           borderWidth: 1
         }]
