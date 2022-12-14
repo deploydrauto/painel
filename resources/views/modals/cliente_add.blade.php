@@ -7,26 +7,26 @@
             data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body flex-grow p-4 overflow-y-auto">
-         
+
         <div class="dropdown relative mt-4">
             <form method="POST" class="client-form" id="client-form">
                 @csrf
 
                 <div class="flex flex-wrap">
                     <input type="hidden" name="user_id" id="user_id" value="0">
-                    <x-bladewind.input name="nome" id="client_nome" required="true" label="nome" />
-                    <x-bladewind.input name="email" id="client_email" required="true" label="email" />
+                    {{-- <x-bladewind.input name="nome" id="client_nome" required="true" label="nome" /> --}}
+                    {{-- <x-bladewind.input name="email" id="client_email" required="true" label="email" /> --}}
                 </div>
-                <x-bladewind.input name="telefone" id="client_telefone" required="true" label="telefone" />
-                <x-bladewind.datepicker name="client_inicio" id="client_inicio" required="true" label="inicio" />
+                {{-- <x-bladewind.input name="telefone" id="client_telefone" required="true" label="telefone" /> --}}
+                {{-- <x-bladewind.datepicker name="client_inicio" id="client_inicio" required="true" label="inicio" /> --}}
 
-                <x-bladewind.dropdown name="games_select" id="games_select" placeholder="Selecione um BOT"
+                {{-- <x-bladewind.dropdown name="games_select" id="games_select" placeholder="Selecione um BOT" --}}
                 data="{{ json_encode($games) }}" />
-            <x-bladewind.dropdown name="plans_select" id="plans_select" placeholder="Selecione um plano"
-                data="{{ json_encode($plans) }}" />
+            {{-- <x-bladewind.dropdown name="plans_select" id="plans_select" placeholder="Selecione um plano" --}}
+                {{-- data="{{ json_encode($plans) }}" /> --}}
 
                 <p>
-                    <x-bladewind.checkbox checked="true" label="Ativo?" />
+                    {{-- <x-bladewind.checkbox checked="true" label="Ativo?" /> --}}
                 </p>
 
                 <br>

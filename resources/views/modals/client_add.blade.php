@@ -37,11 +37,11 @@
 
                     <div class="flex flex-wrap">
                         <input type="hidden" name="user_id" id="user_id" value="0">
-                        <x-bladewind.input name="nome" id="client_nome" required="true" label="nome" />
-                        <x-bladewind.input name="email" id="client_email" required="true" label="email" />
+                        {{-- <x-bladewind.input name="nome" id="client_nome" required="true" label="nome" /> --}}
+                        {{-- <x-bladewind.input name="email" id="client_email" required="true" label="email" /> --}}
                     </div>
-                    <x-bladewind.input name="telefone" id="client_telefone" required="true" label="telefone" />
-                    <x-bladewind.datepicker name="client_inicio" id="client_inicio" required="true" label="inicio" />
+                    {{-- <x-bladewind.input name="telefone" id="client_telefone" required="true" label="telefone" /> --}}
+                    {{-- <x-bladewind.datepicker name="client_inicio" id="client_inicio" required="true" label="inicio" /> --}}
 
                     {{-- <x-bladewind.dropdown name="games_select" id="games_select" placeholder="Selecione um BOT"
                         data="{{ json_encode($games) }}" />
@@ -49,7 +49,7 @@
                         data="{{ json_encode($plans) }}" /> --}}
 
                     <p>
-                        <x-bladewind.checkbox checked="true" label="Ativo?" />
+                        {{-- <x-bladewind.checkbox checked="true" label="Ativo?" /> --}}
                     </p>
 
                     <br>

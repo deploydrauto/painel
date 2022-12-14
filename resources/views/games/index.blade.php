@@ -43,7 +43,7 @@
                         <p>Clientes : {{ $game->clientes }}</p>
                     </td>
                     <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                      
+
                     </td>
                 </tr>
             @endforeach

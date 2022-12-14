@@ -20,7 +20,7 @@
 
                             <input type="text" name="name" placeholder="game">
                             <br>
-                            <x-bladewind.checkbox name="active" label="Ativo ?" checked="true" />
+                            {{-- <x-bladewind.checkbox name="active" label="Ativo ?" checked="true" /> --}}
 
                             {{-- <x-primary-button  type='submit' class="mt-4">{{ __('Salvar') }}</x-primary-button> --}}
 
