@@ -117,13 +117,14 @@
       type: 'bar',
       data: {
         labels: {!!json_encode($graphic_label, JSON_UNESCAPED_UNICODE)!!},
-        datasets: [{
-          label: 'Usuarios Por Bot',
-          color: 'blue',
-          backgroundColor: 'blue',
-          data: {!!  json_encode($graphic_value, JSON_UNESCAPED_UNICODE)!!},
-          borderWidth: 1
-        },
+        datasets: [
+        //     {
+        //   label: 'Usuarios Por Bot',
+        //   color: 'blue',
+        //   backgroundColor: 'blue',
+        //   data: {!!  json_encode($graphic_value, JSON_UNESCAPED_UNICODE)!!},
+        //   borderWidth: 1
+        // },
         {
           label: 'Usuarios Ativos por Bot',
           color: 'green',
@@ -149,7 +150,7 @@
         stacked: true,
         beginAtZero: true
       }
-          
+
         }
       }
     });
