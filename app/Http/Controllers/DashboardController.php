@@ -55,8 +55,8 @@ class DashboardController extends Controller
         return view('users.dashboard' ,  [
             'user' => auth()->user(),
             'users' => $Users,
-            'games' => $game_select,
-            'plans' => $plans_select,
+            'games' => $games,
+            'plans' => $plans,
             'graphic_label' => $graphic_label,
             'graphic_value' => $grapnic_value,
         ]);

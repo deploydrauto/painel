@@ -52,8 +52,8 @@ class UserManagement extends Controller
 
         return view('users.index', [
             'users' => $Users,
-            'games' => $game_select,
-            'plans' => $plans_select,
+            'games' => $games,
+            'plans' => $plans,
         ]);
     }
     /**
