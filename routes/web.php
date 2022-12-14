@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientBotsController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GameBotsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserManagement;
@@ -16,17 +17,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// // Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('games', GameBotsController::class)
     ->only(['index', 'store'])
