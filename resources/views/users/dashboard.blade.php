@@ -121,6 +121,16 @@
           label: 'Usuarios Por Bot',
           data: {!!  json_encode($graphic_value, JSON_UNESCAPED_UNICODE)!!},
           borderWidth: 1
+        },
+        {
+          label: 'Usuarios Ativos por Bot',
+          data: {!!  json_encode($grapnic_value_ative, JSON_UNESCAPED_UNICODE)!!},
+          borderWidth: 1
+        }
+        {
+          label: 'Usuarios Inativos por Bot',
+          data: {!!  json_encode($grapnic_value_inative, JSON_UNESCAPED_UNICODE)!!},
+          borderWidth: 1
         }]
       },
       options: {
