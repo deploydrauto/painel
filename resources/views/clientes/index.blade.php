@@ -6,7 +6,7 @@
             </x-primary-button>
         </div>
 
-        <x-bladewind.table striped="true" divider="thin">
+        {{-- <x-bladewind.table striped="true" divider="thin">
 
             <x-slot name="header">
                 <th>Cliente</th>
@@ -23,10 +23,10 @@
                 <td>xx</td>
             </tr>
             @endforeach
-        </x-bladewind.table>
+        </x-bladewind.table> --}}
     </div>
 
-
+{{--
     <x-bladewind.modal
      name="games-create"
      title="Cadastrar Novo GAME BOT"
@@ -38,11 +38,11 @@
 
             <input type="text" name="name" placeholder="game">
 
-            <x-bladewind.checkbox name="active" label="I am checked by default" checked="true" />
+            {{-- <x-bladewind.checkbox name="active" label="I am checked by default" checked="true" /> --}}
 
-            <x-primary-button  type='submit' class="mt-4">{{ __('Salvar') }}</x-primary-button>
+            {{-- <x-primary-button  type='submit' class="mt-4">{{ __('Salvar') }}</x-primary-button>
         </form>
-    </x-bladewind.modal>
+    </x-bladewind.modal> --}} --}}
 
 
 </x-app-layout>
