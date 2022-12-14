@@ -142,9 +142,14 @@
       },
       options: {
         scales: {
-          y: {
-            beginAtZero: true
-          }
+            x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true,
+        beginAtZero: true
+      }
+          
         }
       }
     });
