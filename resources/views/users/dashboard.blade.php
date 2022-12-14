@@ -83,6 +83,11 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div>
+                                        <div>
+                                            <canvas id="myChart"></canvas>
+                                          </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +109,29 @@
         </div>
     </div>
 </x-app-layout>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('myChart');
 
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: {!!json_encode($graphic_label, JSON_UNESCAPED_UNICODE)!!},
+        datasets: [{
+          label: 'Usuarios Por Bot',
+          data: {!!  json_encode($graphic_value, JSON_UNESCAPED_UNICODE)!!},
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
 <script>
     function loadModal() {
         // showModal('user_add')

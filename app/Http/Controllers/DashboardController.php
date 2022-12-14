@@ -22,7 +22,8 @@ class DashboardController extends Controller
         $Users = User::where('id', $user)->get();
         $games = UserManagement::getUserGames($user);
         $plans = plans::all();
-
+        $graphic_label = [];
+        $grapnic_value = [];
         foreach ($Users as $userKey => $userValue) {
             $Users[$userKey]['clientes'] = client_bots::where('id_user', $user)->count();
             $Users[$userKey]['ativos'] = client_bots::where('id_user', $user)->where('status','=','1')->count();
@@ -31,11 +32,16 @@ class DashboardController extends Controller
             $Users[$userKey]['webhooks'] = user_games::where('id_user', $user)->count();
 
         }
+
         $game_select = [];
+
         $i = 0;
 
         foreach ($games as $gameKey => $gameValue) {
             $game_select[$i] = ['label' => $gameValue->name, 'value' => $gameValue->id];
+            $user_in_game = client_bots::where('id_user', $user)->where('game_id', $gameValue->id_game)->count();
+            array_push($graphic_label, $gameValue->name);
+            array_push($grapnic_value, $user_in_game);
             $i++;
         }
         $plans_select = [];
@@ -51,6 +57,8 @@ class DashboardController extends Controller
             'users' => $Users,
             'games' => $game_select,
             'plans' => $plans_select,
+            'graphic_label' => $graphic_label,
+            'graphic_value' => $grapnic_value,
         ]);
     }
 }
