@@ -48,7 +48,7 @@ class ClientBotsController extends Controller
          $newclient = $request->all();
         // return $newclient;
             $days = plans::where('id',$newclient['body']['id_plan'])->first()->periodicy;
-            $date = str_replace('/', '-', $days);
+            $date = str_replace('/', '-', $newclient['body']['client_inicio']);
             $newDate = date('Y-m-d', strtotime($date));
 
             $start = Carbon::parse($newDate)->format('Y-m-d');
@@ -69,11 +69,11 @@ class ClientBotsController extends Controller
             $cliente->meio = self::MEIO_PAINEL;
 
             $cliente->id_user = $newclient['body']['id_user'];
-            $cliente->inicio = $newclient['body']['client_inicio'];
+            $cliente->inicio =  $start;
             $cliente->termino = $end;
             $cliente->remain = $days;
 
-            $cliente->data_atv = $newclient['body']['client_inicio'];
+            $cliente->data_atv =  $start;
             $cliente->game_id = $newclient['body']['id_game'];
             $cliente->plano_id = $newclient['body']['id_plan'];
             $cliente->save();
