@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
@@ -201,6 +202,37 @@ class UserManagement extends Controller
 
             return $array;
         }
+    }
+    public function desactiveCliente(Request $request, $id)
+    {
+        $array = ['error' => ''];
+        $user = client_bots::find($id);
+        $user->status = 0;
+        $user->termino = date('Y-m-d H:i:s');
+        $user->save();
+
+        //TODO : colocar historico de desativação
+
+        return $array;
+    }
+    public function activeCliente(Request $request, $id)
+    {
+        $array = ['error' => ''];
+
+        $user = client_bots::find($id);
+        $days = plans::where('id',$user->plano_id)->first()->periodicy;
+        $start = Carbon::parse(date('Y-m-d H:i:s'))->format('Y-m-d');
+        $end = Carbon::parse($start)->addDays($days)->format('Y-m-d');
+        $user->status = 1;
+        $user->inicio = $start;
+        $user->data_atv = $start;
+        $user->termino =  $end;
+        $user->save();
+
+
+        //TODO : colocar historico de desativação
+
+        return $array;
     }
 
 }
