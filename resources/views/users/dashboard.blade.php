@@ -248,6 +248,7 @@
             .then(data => {
                 let table = document.getElementById('user-clients-table');
                 table.innerHTML = '';
+                console.log(data);
                 data.forEach(client => {
                     let row = document.createElement('tr');
                     row.innerHTML = `
