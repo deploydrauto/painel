@@ -34,7 +34,7 @@ class ClienteController extends Controller
     {
         try {
             $gameid = game_bots::where('name', $game)->first();
-            $client = client_bots::where('email', $email)->where('game_id',$gameid->id)->where('user_id',$user)->first();
+            $client = client_bots::where('email', $email)->where('game_id',$gameid->id)->where('id_user',$user)->first();
 
             // dd($gameid);
             // dd($client);
