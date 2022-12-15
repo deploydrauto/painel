@@ -49,7 +49,13 @@ class ClientBotsController extends Controller
         // return $newclient;
             $days = plans::where('id',$newclient['body']['id_plan'])->first()->periodicy;
             $start = Carbon::parse($newclient['body']['client_inicio'])->format('Y-m-d');
-            $end = substr($start->addDays($days),0,10) ;
+            // add days to start date copilot start fi
+            $end = Carbon::parse($start)->addDays($days)->format('Y-m-d');
+
+
+
+
+            // $end = substr($start->addDays($days),0,10) ;
 
             $cliente = new client_bots();
             $cliente->nome = $newclient['body']['nome'];
