@@ -32,24 +32,33 @@ class ClienteController extends Controller
     }
     public function checkPerUser($game,$user,$email)
     {
-        $gameid = game_bots::where('name', $game)->first();
-        $client = client_bots::where('email', $email)->where('game_id',$gameid->id)->where('user_id',$user)->first();
+        try {
+            $gameid = game_bots::where('name', $game)->first();
+            $client = client_bots::where('email', $email)->where('game_id',$gameid->id)->where('user_id',$user)->first();
 
-        // dd($gameid);
-        // dd($client);
-        if ($client) {
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Usuário encontrado',
-                'data' => $client
-            ], 200);
+            // dd($gameid);
+            // dd($client);
+            if ($client) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Usuário encontrado',
+                    'data' => $client
+                ], 200);
 
-        } else {
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Usuário não encontrado',
+                    'data' => null
+                ], 200);
+            }
+        } catch (\Throwable $th) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Usuário não encontrado',
                 'data' => null
             ], 200);
         }
+
     }
 }
