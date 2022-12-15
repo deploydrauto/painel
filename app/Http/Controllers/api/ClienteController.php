@@ -42,7 +42,7 @@ class ClienteController extends Controller
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Usuário encontrado',
-                    'data' => $client
+                    'data' => $client['remain']
                 ], 200);
 
             } else {
