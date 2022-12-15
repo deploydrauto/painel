@@ -252,15 +252,15 @@
                     let row = document.createElement('tr');
                     row.innerHTML = `
                         <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"><p>Nome: ${client.nome}</p> <p>Email: ${client.email}</p> <p>Telefone: ${client.telefone}</p></td>
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"><p>Ativação:${client.data_atv}</p>
-                                                                                                                    <p>Meio:${client.meio}</p>
-                                                                                                                    <p>Inicio:${client.inicio}</p>
-                                                                                                                    <p>Fim:${client.termino}</p></td>
-
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.name}</td>
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"><button id >${client.id}</button></td>
-
-                    `;
+                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"><p>Ativação:${client.data_atv}</p><p>Meio:${client.meio}</p></td>
+                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.inicio}</td>
+                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.termino}</td>
+                          <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.status == 1 ? 'ativo':'desativado'}</td>
+                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                            // if status is 1, show button to desactivate
+                            ${client.status == 1 ? '<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Desativar</button>':'<button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Ativar</button>'}
+                        </td>
+  `;
                     table.appendChild(row);
                 });
             });
@@ -323,6 +323,61 @@
             }
         });
     }
+    function ativarCliente(id) {
+        let id_user = +document.getElementById('user_id').value
+
+        $.ajax({
+            url: '/cliente/ativar/' + id,
+            type: "POST",
+            async: false,
+            data: {
+                _token: $('[name=_token]').val(),
+                id_user: +id_user,
+                id: +id,
+
+                body: {
+                    _token: '{{ csrf_token() }}',
+                    id_user: +id_user,
+                    id: +id,
+
+                },
+            },
+            success: function(data) {
+                fetchUserClients(id_user);
+                // fetchNoGameBots(id_user);
+                alert('Cliente Ativado');
+
+            }
+        });
+    }
+    function desativarCliente(id) {
+        let id_user = +document.getElementById('user_id').value
+
+        $.ajax({
+            url: '/cliente/desativar/' + id,
+            type: "POST",
+            async: false,
+            data: {
+                _token: $('[name=_token]').val(),
+                id_user: +id_user,
+                id: +id,
+
+                body: {
+                    _token: '{{ csrf_token() }}',
+                    id_user: +id_user,
+                    id: +id,
+
+                },
+            },
+            success: function(data) {
+                fetchUserClients(id_user);
+                // fetchNoGameBots(id_user);
+                alert('Cliente Desativado');
+
+            }
+        });
+    }
+
     // stor game to user
     function storeGameUser() {
 

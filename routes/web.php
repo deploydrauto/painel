@@ -59,6 +59,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/storegametouser', [UserManagement::class, 'storeGameToUser'])->middleware('can:admin')->name('user.games.store');
     Route::post('/user/deletegameuser/{id}', [UserManagement::class, 'deleteGameToUser'])->middleware('can:admin')->name('user.games.delete');
 
+    Route::post('/cliente/ativar/{id}', [UserManagement::class, 'activeCliente'])->name('cliente.ative');
+    Route::post('/cliente/desativar/{id}', [UserManagement::class, 'desactiveCliente'])->name('cliente.desative');
 
 
     Route::get('/user/webhooks/{id}', [UserManagement::class, 'getWebHooks'])->name('user.webhooks');
