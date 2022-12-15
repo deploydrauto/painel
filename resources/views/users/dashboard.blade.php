@@ -241,10 +241,11 @@
 
     function fetchUserClients(id) {
 
+        document.getElementById('user_id').value = id;
+
         fetch('/users/clientes/' + id)
             .then(response => response.json())
             .then(data => {
-                document.getElementById('user_id').value = id;
                 let table = document.getElementById('user-clients-table');
                 table.innerHTML = '';
                 data.forEach(client => {
@@ -268,12 +269,13 @@
 
     // GAME BOTS
     function fetchGamesUser(id) {
+        document.getElementById('user_id').value = id;
+
         fetchNoGameBots(id)
         fetch('/user/gamesuser/' + id)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                document.getElementById('user_id').value = id;
                 let table = document.getElementById('games-user-table');
                 table.innerHTML = '';
                 data.forEach(game => {
@@ -387,12 +389,14 @@
 
     // fetch webhooks user
     function fetchWebhooksUser(id) {
+        document.getElementById('user_id').value = id;
+
         fetchGamesOfUsers(id)
         fetch('/user/webhooks/' + id)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                document.getElementById('user_id').value = id;
+
                 let table = document.getElementById('webhooks-table');
                 table.innerHTML = '';
                 data.forEach(webhook => {
