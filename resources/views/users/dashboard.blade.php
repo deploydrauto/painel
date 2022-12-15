@@ -154,6 +154,7 @@
         }
       }
     });
+    Chart.defaults.color = "#ffffff";
   </script>
 <script>
     function loadModal() {
@@ -281,6 +282,8 @@
                     row.innerHTML = `
                         <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${game.id}</td>
                         <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${game.name}</td>
+                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${game.url}</td>
+
                         <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                             @can('admin')
                             <button  onClick="deleteGameUser(${game.id})" >Delete</button></td>
