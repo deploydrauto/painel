@@ -44,7 +44,9 @@ class UserManagement extends Controller
         }
         $plans_select = [];
         $index = 0;
-
+        foreach ($games as $key => $row){
+            $game[$key]['id_game'] = $row->id;
+        }
         foreach ($plans as $planKey => $planValue) {
             $plans_select[$index] = ['label' => $planValue->description, 'value' => $planValue->id];
             $index++;
