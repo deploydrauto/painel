@@ -102,7 +102,7 @@
                             id="games_select" name="games_select">
                             <option selected>Selecione um BOT</option>
                             @foreach ( $games  as $game )
-                            <option value="{{$game->id}}">{{$game->name}}</option>
+                            <option value="{{$game->id_game}}">{{$game->name}}</option>
                             @endforeach
                         </select>
                     </div>
