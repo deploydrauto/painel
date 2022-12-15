@@ -56,7 +56,7 @@ class ClienteController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'Usuário não encontrado',
-                'data' => null
+                'data' => $th
             ], 200);
         }
 
