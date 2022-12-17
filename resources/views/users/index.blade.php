@@ -70,11 +70,11 @@
                             <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                 @foreach ($users as $user)
                                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-                                        <td data-bs-toggle="modal" data-bs-target="#user_edit_modal"
+                                        <td data-bs-toggle="modal" data-bs-target="#user_edit_modal" onClick="editUser({{ $user->id }})"
                                             class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $user->name }}
                                         </td>
-                                        <td data-bs-toggle="modal" data-bs-target="#user_edit_modal"
+                                        <td data-bs-toggle="modal" data-bs-target="#user_edit_modal" onClick="editUser({{ $user->id }})"
                                             class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             {{ $user->email }}
                                         </td>
