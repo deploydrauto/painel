@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/login/{game}/{email}/', [ClienteController::class, 'check'])->name('check3');
 Route::get('/login/{game}/{email}', [ClienteController::class, 'check'])->name('check');
 Route::get('/login/{game}/{user}/{email}', [ClienteController::class, 'checkPerUser'])->name('check.peruser');
 
