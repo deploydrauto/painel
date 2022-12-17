@@ -9,8 +9,12 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
-    public function check($game,$email)
+    public function check(Request $request,$game,$email)
     {
+        $mail = $request->query('email');
+        if($mail){
+            $email = $mail;
+        }
         $gameid = game_bots::where('name', $game)->first();
         $user = client_bots::where('email', $email)->where('game_id',$gameid->id)->first();
         // dd($gameid);
