@@ -23,21 +23,10 @@ Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'ver
 Route::get('/', function () {
     return view('auth.login');
 });
-// Route::get('/', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// // Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('games', GameBotsController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified' , 'can:admin']);
-
-// Route::resource('users', UserManagement::class)
-//     ->only(['index', 'store'])
-//     ->middleware(['auth', 'verified']);
 
 Route::resource('clientes', ClientBotsController::class)
     ->only(['index', 'store'])
