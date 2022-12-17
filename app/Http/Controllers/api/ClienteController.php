@@ -34,6 +34,40 @@ class ClienteController extends Controller
             ], 200);
         }
     }
+    public function check2(Request $request,$game)
+    {
+        try {
+            $mail = $request->query('email');
+            if($mail){
+                $email = $mail;
+            }
+            $gameid = game_bots::where('name', $game)->first();
+            $user = client_bots::where('email', $email)->where('game_id',$gameid->id)->first();
+            // dd($gameid);
+            // dd($user);
+            if ($user) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Usuário encontrado',
+                    'data' => $user['remain']
+                ], 200);
+
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Usuário não encontrado',
+                    'data' => null
+                ], 200);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Usuário não encontrado',
+                'data' => $th
+            ], 200);
+        }
+
+    }
     public function checkPerUser($game,$user,$email)
     {
         try {
