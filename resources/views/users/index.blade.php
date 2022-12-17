@@ -70,11 +70,11 @@
                             <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                 @foreach ($users as $user)
                                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-                                        <td onClick="editUser({{ $user->id }})"
+                                        <td data-bs-toggle="modal" data-bs-target="#user_edit_modal" onClick="editUser({{ $user->id }})"
                                             class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $user->name }}
                                         </td>
-                                        <td onClick="editUser({{ $user->id }})"
+                                        <td data-bs-toggle="modal" data-bs-target="#user_edit_modal" onClick="editUser({{ $user->id }})"
                                             class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             {{ $user->email }}
                                         </td>
@@ -137,12 +137,13 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                form.name.value = data.name;
-                form.email.value = data.email;
-                form.password.value = data.password;
-                form.password_confirmation.value = data.password_confirmation;
+                form.edit_user_id.value = id;
+                form.edit_name.value = data.name;
+                form.edit_email.value = data.email;
+                form.edit_password.value = data.password;
+                form.edit_password_confirmation.value = data.password;
             });
-        form.action = '/users/edit/' + id;
+        form.action = '/user/edit/' + id;
 
 
         showModal('user-edit')

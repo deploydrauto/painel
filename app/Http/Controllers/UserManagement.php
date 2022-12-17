@@ -85,6 +85,24 @@ class UserManagement extends Controller
         $usuario = User::find($id);
         return $usuario;
     }
+    public function editUser(Request $request, $id){
+
+        $request->validate([
+            'edit_name' => ['required', 'string', 'max:255'],
+            'edit_email' => ['required', 'string', 'email', 'max:255'],
+            'edit_password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+        $id = $request->edit_user_id;
+        $usuario = User::find($id);
+
+        $usuario->password = Hash::make($request->edit_password);
+        $usuario->name = $request->edit_name;
+        $usuario->email = $request->edit_email;
+        $usuario->save();
+
+        return redirect()->route('users.index');
+
+    }
     public function clientes(Request $request, $id)
     {
         $usuario = DB::table('client_bots')
