@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/client/new', [ClientBotsController::class, 'store'])->name('client.store');
 
     Route::get('/user/show/{id}', [UserManagement::class, 'show'])->name('user.show');
-    Route::post('/user/edit/{id}', [UserManagement::class, 'editUser'])->name('user.edit');
+    Route::post('/user/edit', [UserManagement::class, 'editUser'])->name('user.edit');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

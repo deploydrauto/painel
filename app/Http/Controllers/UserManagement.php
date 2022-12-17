@@ -85,7 +85,7 @@ class UserManagement extends Controller
         $usuario = User::find($id);
         return $usuario;
     }
-    public function editUser(Request $request, $id){
+    public function editUser(Request $request){
 
         $request->validate([
             'edit_name' => ['required', 'string', 'max:255'],
