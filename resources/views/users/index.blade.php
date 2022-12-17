@@ -119,6 +119,7 @@
     @include('modals.clientes_user')
     @include('modals.games_user')
     @include('modals.webhooks_user')
+    @include('modals.user_edit')
 
 
 
@@ -143,10 +144,10 @@
                 form.edit_password.value = data.password;
                 form.edit_password_confirmation.value = data.password;
             });
-        form.action = '/user/edit/' + id;
 
 
-        showModal('user-edit')
+
+        // showModal('user-edit')
     }
 
     function storeClient() {
