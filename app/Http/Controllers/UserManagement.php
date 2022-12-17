@@ -144,7 +144,7 @@ class UserManagement extends Controller
             $userGame = new user_games();
             $userGame->id_user = $request->id_user;
             $userGame->id_game = $request->id_game;
-            $userGame->url = user_webhooks::URLHOOK . "/" . $game['name'] . "/" . $request->id_user . "?email=";
+            $userGame->url = user_webhooks::URLHOOK . "login/" . $game['name'] . "/" . $request->id_user . "?email=";
             $userGame->status = 1;
             $userGame->created_at = date('Y-m-d H:i:s');
             $userGame->save();
