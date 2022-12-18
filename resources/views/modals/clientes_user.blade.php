@@ -43,10 +43,14 @@
                                 class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                 termino
                             </th>
-                           
+
                             <th scope="col"
                                 class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Actions
+                                status
+                            </th>
+                            <th scope="col"
+                                class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                Apagar
                             </th>
                             </th>
 
