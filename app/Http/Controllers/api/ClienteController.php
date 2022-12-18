@@ -46,7 +46,7 @@ class ClienteController extends Controller
                 $email = $mail;
             }
             $gameid = game_bots::where('name', $game)->first();
-            $user = client_bots::where('email', $email)->where('game_id',$gameid->id)->first();
+            $user = client_bots::where('email', $email)->where('game_id',$gameid->id)->where('status',1)->first();
             // dd($gameid);
             // dd($user);
             if ($user) {

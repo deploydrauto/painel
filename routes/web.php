@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::post('/client/new', [ClientBotsController::class, 'store'])->name('client.store');
+    Route::post('/client/delete/{id}', [ClientBotsController::class, 'delete'])->name('client.delete');
 
     Route::get('/user/show/{id}', [UserManagement::class, 'show'])->name('user.show');
     Route::post('/user/edit', [UserManagement::class, 'editUser'])->name('user.edit');

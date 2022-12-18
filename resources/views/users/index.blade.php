@@ -471,4 +471,86 @@
             }
         });
     }
+    function deleteClient(id) {
+        let id_user = +document.getElementById('user_id').value
+
+        $.ajax({
+            url: '/client/delete/' + id,
+            type: "POST",
+            async: false,
+            data: {
+                _token: $('[name=_token]').val(),
+                id_user: +id_user,
+                id: +id,
+
+                body: {
+                    _token: '{{ csrf_token() }}',
+                    id_user: +id_user,
+                    id: +id,
+
+                },
+            },
+            success: function(data) {
+                fetchUserClients(id_user);
+                fetchGamesUser(id_user);
+                fetchNoGameBots(id_user);
+                alert('Cliente apagado com sucesso');
+
+            }
+        });
+    }
+    function ativarCliente(id) {
+        let id_user = +document.getElementById('user_id').value
+
+        $.ajax({
+            url: '/cliente/ativar/' + id,
+            type: "POST",
+            async: false,
+            data: {
+                _token: $('[name=_token]').val(),
+                id_user: +id_user,
+                id: +id,
+
+                body: {
+                    _token: '{{ csrf_token() }}',
+                    id_user: +id_user,
+                    id: +id,
+
+                },
+            },
+            success: function(data) {
+                fetchUserClients(id_user);
+                // fetchNoGameBots(id_user);
+                alert('Cliente Ativado');
+
+            }
+        });
+    }
+    function desativarCliente(id) {
+        let id_user = +document.getElementById('user_id').value
+
+        $.ajax({
+            url: '/cliente/desativar/' + id,
+            type: "POST",
+            async: false,
+            data: {
+                _token: $('[name=_token]').val(),
+                id_user: +id_user,
+                id: +id,
+
+                body: {
+                    _token: '{{ csrf_token() }}',
+                    id_user: +id_user,
+                    id: +id,
+
+                },
+            },
+            success: function(data) {
+                fetchUserClients(id_user);
+                // fetchNoGameBots(id_user);
+                alert('Cliente Desativado');
+
+            }
+        });
+    }
 </script>

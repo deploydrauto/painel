@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\client_bots;
+use App\Models\client_bots_trash;
 use App\Models\historico_clientes;
 use App\Models\plans;
 use Carbon\Carbon;
@@ -114,6 +115,7 @@ class ClientBotsController extends Controller
         //
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -135,5 +137,31 @@ class ClientBotsController extends Controller
     public function destroy(client_bots $client_bots)
     {
         //
+    }
+    public function delete(Request $request,$id)
+    {
+       $soft = client_bots::find($id);
+       $store = new client_bots_trash();
+        $store->real_id = $soft->id;
+        $store->nome = $soft->nome;
+        $store->email = $soft->email;
+        $store->telefone = $soft->telefone;
+        $store->status = $soft->status;
+        $store->meio = $soft->meio;
+        $store->id_user = $soft->id_user;
+        $store->inicio =  $soft->inicio;
+        $store->termino = $soft->termino;
+        $store->remain = $soft->remain;
+        $store->data_atv =  $soft->data_atv;
+        $store->game_id = $soft->game_id;
+        $store->plano_id = $soft->plano_id;
+        $store->deleted_by = $request->user()->id;
+        $store->deleted_at = Carbon::now();
+        $store->save();
+
+      $soft->delete();
+
+
+        return ['error' => '', 'result' => 'Cliente deletado com sucesso'];
     }
 }
