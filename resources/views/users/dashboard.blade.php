@@ -272,11 +272,13 @@
         }
 
     function showEditClient(id) {
+        let form = document.getElementById('client-edit-form');
+        
         fetch('/client/show/' + id)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                let form = document.getElementById('client-edit-form');
+
                 form.client_id.value = data.id;
                 form.nome.value = data.nome;
                 form.email.value = data.email;
