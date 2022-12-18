@@ -103,7 +103,7 @@ class ClientBotsController extends Controller
     {
         //
         $array = ['error' => ''];
-        $cliente = client_bots::where('id',$id)->get();
+        $cliente = client_bots::where('id',$id)->first();
         return $cliente;
     }
 
