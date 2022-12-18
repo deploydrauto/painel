@@ -70,11 +70,13 @@
                             <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                                 @foreach ($users as $user)
                                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-                                        <td data-bs-toggle="modal" data-bs-target="#user_edit_modal" onClick="editUser({{ $user->id }})"
+                                        <td data-bs-toggle="modal" data-bs-target="#user_edit_modal"
+                                            onClick="editUser({{ $user->id }})"
                                             class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {{ $user->name }}
                                         </td>
-                                        <td data-bs-toggle="modal" data-bs-target="#user_edit_modal" onClick="editUser({{ $user->id }})"
+                                        <td data-bs-toggle="modal" data-bs-target="#user_edit_modal"
+                                            onClick="editUser({{ $user->id }})"
                                             class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                             {{ $user->email }}
                                         </td>
@@ -95,8 +97,10 @@
                                                 </x-primary-button>
                                             </p>
                                             <p>
-                                                <x-primary-button class="mt-1"   data-bs-toggle="modal"
-                                                data-bs-target="#webhooks_modal" onclick="fetchWebhooksUser({{ $user->id }})"> WebHooks : {{ $user->webhooks }}
+                                                <x-primary-button class="mt-1" data-bs-toggle="modal"
+                                                    data-bs-target="#webhooks_modal"
+                                                    onclick="fetchWebhooksUser({{ $user->id }})"> WebHooks :
+                                                    {{ $user->webhooks }}
                                                 </x-primary-button>
                                             </p>
 
@@ -211,25 +215,30 @@
 
     function fetchUserClients(id) {
 
+        document.getElementById('user_id').value = id;
+
         fetch('/users/clientes/' + id)
             .then(response => response.json())
             .then(data => {
-                document.getElementById('user_id').value = id;
                 let table = document.getElementById('user-clients-table');
                 table.innerHTML = '';
+                console.log(data);
                 data.forEach(client => {
                     let row = document.createElement('tr');
                     row.innerHTML = `
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"><p>Nome: ${client.nome}</p> <p>Email: ${client.email}</p> <p>Telefone: ${client.telefone}</p></td>
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"><p>Ativação:${client.data_atv}</p>
-                                                                                                                    <p>Meio:${client.meio}</p>
-                                                                                                                    <p>Inicio:${client.inicio}</p>
-                                                                                                                    <p>Fim:${client.termino}</p></td>
-
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.name}</td>
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"><button id >${client.id}</button></td>
-
-                    `;
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                    <p>Nome: ${client.nome}</p>
+                    <p>Email: ${client.email}</p>
+                    <p>Telefone: ${client.telefone}</p>
+                    <p>Ativação:${client.data_atv}</p>
+                    <p>Meio:${client.meio}</p></td>
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.name}</td>
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.inicio}</td>
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.termino}</td>
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                    ${client.status == 1 ? '<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Ativo</button>':'<button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Desativado</button>'}
+                </td>
+`;
                     table.appendChild(row);
                 });
             });
@@ -414,6 +423,7 @@
             }
         });
     }
+
     function fetchGamesOfUsers(id) {
         fetchNoGameBots(id)
         fetch('/user/gamesuser/' + id)
@@ -444,6 +454,7 @@
 
             });
     }
+
     function deleteWebhookUser(id) {
         let id_user = +document.getElementById('user_id').value
 
@@ -471,6 +482,7 @@
             }
         });
     }
+
     function deleteClient(id) {
         let id_user = +document.getElementById('user_id').value
 
@@ -499,6 +511,7 @@
             }
         });
     }
+
     function ativarCliente(id) {
         let id_user = +document.getElementById('user_id').value
 
@@ -526,6 +539,7 @@
             }
         });
     }
+
     function desativarCliente(id) {
         let id_user = +document.getElementById('user_id').value
 
