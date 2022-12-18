@@ -301,22 +301,20 @@
                 data.forEach(client => {
                     let row = document.createElement('tr');
                     row.innerHTML = `
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"
-                        onClick="showEditClient(${client.id})"
-                        data-bs-toggle="offcanvas" href="#clientEdit"
-                        aria-controls="clientEdit"
+                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white cursor-pointer"
+                            onClick="showEditClient(${client.id})"
+                            data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                            aria-controls="offcanvasExample"
                         >
                             <p>Nome: ${client.nome}</p>
                             <p>Email: ${client.email}</p>
                             <p>Telefone: ${client.telefone}</p>
                             <p>Ativação:${client.data_atv}</p>
                             <p>Meio:${client.meio}</p></td>
-                        <td  onClick="showEditClient(${client.id})"
-                        data-bs-toggle="offcanvas" href="#clientEdit"
-                        aria-controls="clientEdit" class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.name}</td>
-                        <td onClick="showEditClient(${client.id})"  class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.inicio}</td>
-                        <td                         data-bs-toggle="offcanvas" href="#clientEdit" class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.termino}</td>
-                        <td                         aria-controls="clientEdit"  class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                        <td onClick="showEditClient(${client.id})" class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.name}</td>
+                        <td onClick="showEditClient(${client.id})" class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.inicio}</td>
+                        <td onClick="showEditClient(${client.id})"class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.termino}</td>
+                        <td onClick="showEditClient(${client.id})" class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                             ${client.status == 1 ? '<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Ativo</button>':'<button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Desativado</button>'}
                         </td>
   `;
