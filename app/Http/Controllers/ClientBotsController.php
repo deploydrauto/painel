@@ -99,9 +99,12 @@ class ClientBotsController extends Controller
      * @param  \App\Models\client_bots  $client_bots
      * @return \Illuminate\Http\Response
      */
-    public function show(client_bots $client_bots)
+    public function show(Request $request,$id)
     {
         //
+        $array = ['error' => ''];
+        $cliente = client_bots::where('id',$id)->get();
+        return $cliente;
     }
 
     /**
@@ -163,5 +166,51 @@ class ClientBotsController extends Controller
 
 
         return ['error' => '', 'result' => 'Cliente deletado com sucesso'];
+    }
+    public function editClient(Request $request)
+    {
+            $newclient = $request->all();
+            $id = $newclient['body']['id'];
+            $days = plans::where('id',$newclient['body']['id_plan'])->first()->periodicy;
+            $date = str_replace('/', '-', $newclient['body']['client_inicio']);
+            $newDate = date('Y-m-d', strtotime($date));
+
+            $start = Carbon::parse($newDate)->format('Y-m-d');
+
+            // add days to start date copilot start fi
+            $end = Carbon::parse($start)->addDays($days)->format('Y-m-d');
+
+
+            $cliente = client_bots::find($id);
+            $cliente->nome = $newclient['body']['nome'];
+            $cliente->email = $newclient['body']['email'];
+            $cliente->telefone = $newclient['body']['telefone'];
+            $cliente->status = self::ATIVO;
+            $cliente->meio = self::MEIO_PAINEL;
+
+            $cliente->id_user = $newclient['body']['id_user'];
+            $cliente->inicio =  $start;
+            $cliente->termino = $end;
+            $cliente->remain = $days;
+
+            $cliente->data_atv =  $start;
+            $cliente->game_id = $newclient['body']['id_game'];
+            $cliente->plano_id = $newclient['body']['id_plan'];
+            $cliente->save();
+
+
+            $historico = new historico_clientes();
+            $historico->client_id = $id;
+            $historico->plano_id = $newclient['body']['id_plan'];
+            $historico->user_id = $newclient['body']['id_user'];
+            $historico->periodo = $days;
+            $historico->metodo = self::MEIO_PAINEL;
+            $historico->inicio = $newclient['body']['client_inicio'];
+            $historico->termino = $end;
+            $historico->save();
+
+
+
+        return ['error' => '', 'result' => 'Cliente editado com sucesso'];
     }
 }

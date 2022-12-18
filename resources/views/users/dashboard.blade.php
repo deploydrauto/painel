@@ -238,7 +238,56 @@
         });
 
     }
+    function editClientJson() {
 
+        let form = document.getElementById('client-edit-form');
+
+        $.ajax({
+            url: "{{ route('client.edit') }}",
+            type: "POST",
+            async: false,
+            data: {
+                _token: $('[name=_token]').val(),
+                id_user: form.user_id.value,
+                body: {
+                    _token: '{{ csrf_token() }}',
+                    id: form.client_id.value,
+                    nome: form.nome.value,
+                    email: form.email.value,
+                    telefone: form.telefone.value,
+                    client_inicio: form.client_inicio.value,
+                    id_user: form.user_id.value,
+                    id_game: form.games_select.value,
+                    id_plan: form.plans_select.value,
+                },
+            },
+            success: function(data) {
+                fetchUserClients(form.user_id.value);
+                alert('Cliente editado com sucesso');
+                form.reset();
+                hideModal('client');
+            }
+        });
+
+        }
+
+    function showEditClient(id) {
+        fetch('/client/show/' + id)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                let form = document.getElementById('client-edit-form');
+                form.client_id.value = data.id;
+                form.nome.value = data.nome;
+                form.email.value = data.email;
+                form.telefone.value = data.telefone;
+                form.client_inicio.value = data.client_inicio;
+                form.user_id.value = data.id_user;
+                form.games_select.value = data.id_game;
+                form.plans_select.value = data.id_plan;
+                showModal('client-edit');
+            });
+    }
     function fetchUserClients(id) {
 
         document.getElementById('user_id').value = id;
@@ -252,16 +301,22 @@
                 data.forEach(client => {
                     let row = document.createElement('tr');
                     row.innerHTML = `
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"
+                        onClick="showEditClient(${client.id})"
+                        data-bs-toggle="offcanvas" href="#clientEdit"
+                        aria-controls="clientEdit"
+                        >
                             <p>Nome: ${client.nome}</p>
                             <p>Email: ${client.email}</p>
                             <p>Telefone: ${client.telefone}</p>
                             <p>Ativação:${client.data_atv}</p>
                             <p>Meio:${client.meio}</p></td>
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.name}</td>
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.inicio}</td>
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.termino}</td>
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                        <td  onClick="showEditClient(${client.id})"
+                        data-bs-toggle="offcanvas" href="#clientEdit"
+                        aria-controls="clientEdit" class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.name}</td>
+                        <td onClick="showEditClient(${client.id})"  class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.inicio}</td>
+                        <td                         data-bs-toggle="offcanvas" href="#clientEdit" class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.termino}</td>
+                        <td                         aria-controls="clientEdit"  class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                             ${client.status == 1 ? '<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Ativo</button>':'<button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Desativado</button>'}
                         </td>
   `;

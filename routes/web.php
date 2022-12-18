@@ -60,8 +60,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/webhooks/store', [UserManagement::class, 'storeWebHook'])->name('user.webhook.store');
     Route::post('/user/webhook/delete/{id}', [UserManagement::class, 'deleteWebHook'])->name('user.webhook.delete');
 
-
+    Route::get('/client/show/{id}', [ClientBotsController::class, 'show'])->name('client.show');
     Route::post('/client/new', [ClientBotsController::class, 'store'])->name('client.store');
+    Route::post('/client/edit', [ClientBotsController::class, 'editClient'])->name('client.edit');
     Route::post('/client/delete/{id}', [ClientBotsController::class, 'delete'])->name('client.delete');
 
     Route::get('/user/show/{id}', [UserManagement::class, 'show'])->name('user.show');
