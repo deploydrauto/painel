@@ -273,7 +273,7 @@
 
     function showEditClient(id) {
         let form = document.getElementById('client-edit-form');
-        
+
         fetch('/client/show/' + id)
             .then(response => response.json())
             .then(data => {
@@ -304,9 +304,7 @@
                     let row = document.createElement('tr');
                     row.innerHTML = `
                         <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white cursor-pointer"
-                            onClick="showEditClient(${client.id})"
-                            data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-                            aria-controls="offcanvasExample"
+
                         >
                             <p>Nome: ${client.nome}</p>
                             <p>Email: ${client.email}</p>
