@@ -210,7 +210,12 @@
     function storeClientJson() {
 
         let form = document.getElementById('client-form');
-
+        if(form.plans_select.value != null 
+        && form.games_select.value != null 
+        && form.user_id.value != null 
+        && form.client_inicio.value != null 
+        && form.email.value != null ) {
+        
         $.ajax({
             url: "{{ route('client.store') }}",
             type: "POST",
@@ -235,7 +240,10 @@
                 form.reset();
                 hideModal('client');
             }
-        });
+        }); }
+        else {
+            alert('Campos obrigatorios não preenchidos')
+        }
 
     }
     function editClientJson() {
