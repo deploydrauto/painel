@@ -12,7 +12,7 @@ class WebhooksController extends Controller
 {
     public function index($method, $game, $iduser, Request $request)
     {
-
+         
         switch ($method) {
             case 'kiwify':
                 self::kiwify($game, $iduser, $request);
@@ -275,6 +275,7 @@ class WebhooksController extends Controller
     }
     public static function liberaAcesso(client_bots $client_bots, $dias)
     {
+        $exist  = client_bots::where('email', $client_bots->email)->where('game_id', $client_bots->game_id)->where('id_user', $client_bots->id_user);
         // carbon add $dias to $client_bot->termino
         $client_bots->status = 1;
         $client_bots->data_atv = date('Y-m-d H:i:s');
@@ -283,7 +284,21 @@ class WebhooksController extends Controller
         $client_bots->created_at = date('Y-m-d H:i:s');
         $client_bots->updated_at = date('Y-m-d H:i:s');
         $client_bots->remain = $dias;
-        $client_bots->save();
+        if($exist->count() > 0 ){
+                    $client = find($exist->first()->id);
+                    $client->status = 1;
+                    $client->data_atv = date('Y-m-d H:i:s');
+                    $client->inicio = date('Y-m-d H:i:s');
+                    $client->termino = date('Y-m-d H:i:s', strtotime("+$dias days"));
+                    $client->created_at = date('Y-m-d H:i:s');
+                    $client->updated_at = date('Y-m-d H:i:s');
+                    $client->remain = $dias;
+            client_bots->save();
+            
+        }else {
+             $client_bots->save();
+        }
+       
         //TODO : Salvar no historico do usuario
 
     }
