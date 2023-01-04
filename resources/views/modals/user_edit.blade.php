@@ -10,8 +10,8 @@
                     Edição de Usuario
                 </h5>
                 <button type="button"
-                    class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                    data-bs-dismiss="modal" aria-label="Close"></button>
+                    class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Close">x</button>
             </div>
 
             <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
