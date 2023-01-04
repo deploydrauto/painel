@@ -41,7 +41,7 @@ class UserManagement extends Controller
         $gam = [];
         foreach ($games as $gameKey => $gameValue) {
             $game_select[$i] = ['label' => $gameValue->name, 'value' => $gameValue->id];
-            $games[$gamekey]['id_game'] = $gameValue->id;
+            $games[$gameKey]['id_game'] = $gameValue->id;
         }
         $plans_select = [];
         $index = 0;
