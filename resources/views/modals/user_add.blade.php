@@ -10,8 +10,8 @@
                     Cadastro de Usuario
                 </h5>
                 <button type="button"
-                    class="btn-close box-content w-4 h-4 p-1 text-black  "
-                    data-bs-dismiss="modal" aria-label="Close"></button>
+                    class="btn-close   "
+                    data-bs-dismiss="modal" aria-label="Close">x</button>
             </div>
 
             <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
