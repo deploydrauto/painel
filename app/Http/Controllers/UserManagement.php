@@ -41,8 +41,7 @@ class UserManagement extends Controller
         $gam = [];
         foreach ($games as $gameKey => $gameValue) {
             $game_select[$i] = ['label' => $gameValue->name, 'value' => $gameValue->id];
-            $gam[$i] = ['name' => $gameValue->name, 'id_game' => $gameValue->id];
-            $i++;
+            $games[$gamekey]['id_game'] = $gameValue->id;
         }
         $plans_select = [];
         $index = 0;
@@ -56,7 +55,7 @@ class UserManagement extends Controller
 
         return view('users.index', [
             'users' => $Users,
-            'games' => $gam,
+            'games' => $games,
             'plans' => $plans,
         ]);
     }
