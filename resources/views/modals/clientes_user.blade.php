@@ -33,7 +33,7 @@
                             <th>Apagar</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="user-clients-table">
 
                     </tbody>
                     <tfoot>
