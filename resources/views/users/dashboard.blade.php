@@ -353,7 +353,7 @@ selectElement.addEventListener('change', (event) => {
                             client.inicio,
                             client.termino,
                             client.status == 1 ? '<button class="bg-green-500 hover:bg-green-700  text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Ativo</button>':'<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Desativado</button>',
-                            `button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="deleteClient(${client.id})">
+                            `<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="deleteClient(${client.id})">
                         <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
