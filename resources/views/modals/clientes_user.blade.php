@@ -26,36 +26,16 @@
                     class="display" id="example" >
                     <thead class="bg-gray-100 dark:bg-gray-700">
                         <tr>
-                            <th scope="col"
-                                class=" w-1/6 py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Dados
-                            </th>
-
-                            <th scope="col"
-                                class="py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Game BOT
-                            </th>
-                            <th scope="col"
-                                class="py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Inicio
-                            </th>
-                            <th scope="col"
-                                class="py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                termino
-                            </th>
-
-                            <th scope="col"
-                                class="py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                status
-                            </th>
-                            <th scope="col"
-                                class="py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                Apagar
-                            </th>
+                            <th>Dados</th>
+                            <th>Game BOT</th>
+                            <th>Inicio</th>
+                            <th>termino</th>
+                            <th>status</th>
+                            <th>Apagar</th>
                         <tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
-                        id="user-clients-table">
+                    <tbody  id="user-clients-table">
+
                     </tbody>
                 </table>
             </div>
