@@ -13,7 +13,7 @@
 
 
             <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
-                <form method="POST" class="client-form" id="client-form-edit">
+                <form method="POST" class="client-form" id="client-edit-form">
                     @csrf
                     <div class="grid grid-cols-2 gap-4">
                         <div class="form-group mb-6">
@@ -108,7 +108,7 @@
                     </div>
                     <div class="form-group mb-6">
                         <select
-                            class="form-select appearance-none
+                            class="ice-cream form-select appearance-none
                           block
                           w-full
                           px-3
@@ -131,6 +131,27 @@
                             @endforeach
                         </select>
                     </div>
+                    <div id="divteste" class=" divteste form-group mb-6 hidden">
+                        <input type="number"
+                            class="form-control
+                            block
+                            w-full
+                            px-3
+                            py-1.5
+                            text-base
+                            font-normal
+                            text-gray-700
+                            bg-white bg-clip-padding
+                            border border-solid border-gray-300
+                            rounded
+                            transition
+                            ease-in-out
+                            m-0
+                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            id="testedays" name="testedays" aria-describedby="testedays" placeholder="teste">
+                    </div>
+                <input type="hidden" id="client_id" name="client_id" value="">
+
                     <div class="form-group form-check text-center mb-6">
                         <input type="checkbox"
                             class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
@@ -148,7 +169,7 @@
                     class="modal-close px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2"
                     data-bs-dismiss="offcanvas">Cancelar</button>
                 <button class="  px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400 modal-close"
-                    data-bs-dismiss="offcanvas" onCLick="storeClientJson()">Cadastrar</button>
+                    data-bs-dismiss="offcanvas" onCLick="editClientJson()">Atualizar</button>
             </div>
         </div>
     </div>

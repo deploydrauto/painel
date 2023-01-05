@@ -99,7 +99,7 @@
                     @include('modals.clientes_user')
                     @include('modals.games_user')
                     @include('modals.webhooks_user')
-                   
+
 
 
 
@@ -157,11 +157,31 @@
     Chart.defaults.color = "#ffffff";
   </script>
 <script>
+ const selectElement = document.querySelector('.ice-cream');
+
+selectElement.addEventListener('change', (event) => {
+
+    if ( event.target.value == 5) {
+            // show plan_custom
+            console.log("selecionado")
+            document.querySelector('.divteste').classList.remove('hidden')
+        } else {
+            // hide plan_custom
+            document.querySelector('.divteste').classList.add('hidden')
+        }
+//   const result = document.querySelector('.result');
+//   result.textContent = `You like ${event.target.value}`;
+});
+
+
+
+
     function loadModal() {
         // showModal('user_add')
         console.log(document.querySelectorAll('user_add'))
 
     }
+
     // replace action of form
     function editUser(id) {
         var form = document.getElementById('user-edit-form');
@@ -210,12 +230,12 @@
     function storeClientJson() {
 
         let form = document.getElementById('client-form');
-        if(form.plans_select.value != null 
-        && form.games_select.value != null 
-        && form.user_id.value != null 
-        && form.client_inicio.value != null 
+        if(form.plans_select.value != null
+        && form.games_select.value != null
+        && form.user_id.value != null
+        && form.client_inicio.value != null
         && form.email.value != null ) {
-        
+
         $.ajax({
             url: "{{ route('client.store') }}",
             type: "POST",
@@ -232,6 +252,7 @@
                     id_user: form.user_id.value,
                     id_game: form.games_select.value,
                     id_plan: form.plans_select.value,
+                    testedays: form.testedays.value,
                 },
             },
             success: function(data) {
@@ -267,6 +288,8 @@
                     id_user: form.user_id.value,
                     id_game: form.games_select.value,
                     id_plan: form.plans_select.value,
+                    testedays: form.testedays.value,
+
                 },
             },
             success: function(data) {
@@ -285,17 +308,16 @@
         fetch('/client/show/' + id)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
 
-                form.client_id.value = data.id;
+                form.client_id.value = id;
                 form.nome.value = data.nome;
                 form.email.value = data.email;
                 form.telefone.value = data.telefone;
-                form.client_inicio.value = data.client_inicio;
+                form.client_inicio.value = data.inicio;
                 form.user_id.value = data.id_user;
-                form.games_select.value = data.id_game;
-                form.plans_select.value = data.id_plan;
-                
+                form.games_select.value = data.game_id;
+                form.plans_select.value = data.plano_id;
+
             });
     }
     function fetchUserClients(id) {
@@ -311,9 +333,8 @@
                 data.forEach(client => {
                     let row = document.createElement('tr');
                     row.innerHTML = `
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white cursor-pointer"
-
-                        >       <a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5"
+                        <td class="py-4 px-4 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white cursor-pointer " >
+                         <a class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5"
                         data-bs-toggle="offcanvas" href="#offcanvascliente" role="button" onClick="showEditClient(${client.id})"
                         aria-controls="clientEdit">
                             <p>Nome: ${client.nome}</p>

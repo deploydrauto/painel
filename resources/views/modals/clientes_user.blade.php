@@ -9,7 +9,7 @@
                     CLientes do Usuario
                 </h5>
                 <div class="self-end">
-                    <a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5"
+                    <a class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5"
                         data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                         aria-controls="clientEdit">
                         + Cliente
@@ -23,33 +23,33 @@
             </div>
             <div class="modal-body relative p-4 ">
                 <table
-                    class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700 overflow-y-scroll overflow-x-scroll">
+                    class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700 overflow-y-scroll">
                     <thead class="bg-gray-100 dark:bg-gray-700">
                         <tr>
                             <th scope="col"
-                                class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                class=" w-1/6 py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                 Dados
                             </th>
 
                             <th scope="col"
-                                class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                class="py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                 Game BOT
                             </th>
                             <th scope="col"
-                                class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                class="py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                 Inicio
                             </th>
                             <th scope="col"
-                                class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                class="py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                 termino
                             </th>
 
                             <th scope="col"
-                                class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                class="py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                 status
                             </th>
                             <th scope="col"
-                                class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                class="py-3 px-4 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                 Apagar
                             </th>
                             </th>

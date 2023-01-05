@@ -106,9 +106,10 @@
                             @endforeach
                         </select>
                     </div>
+
                     <div class="form-group mb-6">
                         <select
-                            class="form-select appearance-none
+                            class=" ice-cream form-select appearance-none
                           block
                           w-full
                           px-3
@@ -130,6 +131,25 @@
                                 <option value="{{$plan->id}}">{{$plan->description}}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div id="divteste" class=" divteste form-group mb-6 hidden">
+                        <input type="number"
+                            class="form-control
+                            block
+                            w-full
+                            px-3
+                            py-1.5
+                            text-base
+                            font-normal
+                            text-gray-700
+                            bg-white bg-clip-padding
+                            border border-solid border-gray-300
+                            rounded
+                            transition
+                            ease-in-out
+                            m-0
+                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            id="testedays" name="testedays" aria-describedby="testedays" placeholder="teste">
                     </div>
                     <div class="form-group form-check text-center mb-6">
                         <input type="checkbox"
