@@ -328,7 +328,7 @@ selectElement.addEventListener('change', (event) => {
                 $('#example').DataTable().clear().destroy();
 
                 //Create new Datatable
-                $('#example').DataTable({...})
+                $('#example').DataTable()
                 fetchGamesUser(id_user);
                 fetchNoGameBots(id_user);
                 // alert('Cliente cadastrado com sucesso');
