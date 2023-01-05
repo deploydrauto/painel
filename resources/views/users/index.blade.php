@@ -539,6 +539,8 @@ selectElement.addEventListener('change', (event) => {
                 fetchGamesUser(id_user);
                 fetchNoGameBots(id_user);
                 alert('Cliente apagado com sucesso');
+                // reload page
+                 location.reload();
 
             }
         });
