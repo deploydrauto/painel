@@ -161,7 +161,12 @@
   </script>
 <script>
     $(document).ready(function () {
-    $('#example').DataTable();
+    $('#example').DataTable({
+        lengthMenu: [
+            [10, 25, 50,100,1000, -1],
+            [10, 25, 50, 100,1000, 'All'],
+        ],
+    });
 });
  const selectElement = document.querySelector('.ice-cream');
 
