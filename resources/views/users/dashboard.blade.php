@@ -270,7 +270,7 @@ selectElement.addEventListener('change', (event) => {
                 $('#example').DataTable().clear().destroy();
 
 //Create new Datatable
-$('#example').DataTable({...})
+$('#example').DataTable();
 
                 fetchUserClients(form.user_id.value);
                 alert('Cliente cadastrado com sucesso');
@@ -694,7 +694,7 @@ $('#example').DataTable({...})
                 $('#example').DataTable().clear().destroy();
 
                 //Create new Datatable
-                $('#example').DataTable({...})
+                $('#example').DataTable();
 
                 fetchUserClients(id_user);
                 fetchGamesUser(id_user);
