@@ -5,6 +5,9 @@
         </h2>
     </x-slot>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -109,7 +112,7 @@
         </div>
     </div>
 </x-app-layout>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></scrip>
 <script>
     const ctx = document.getElementById('myChart');
 
@@ -157,6 +160,9 @@
     Chart.defaults.color = "#ffffff";
   </script>
 <script>
+    $(document).ready(function () {
+    $('#example').DataTable();
+});
  const selectElement = document.querySelector('.ice-cream');
 
 selectElement.addEventListener('change', (event) => {

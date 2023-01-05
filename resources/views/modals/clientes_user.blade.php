@@ -23,7 +23,7 @@
             </div>
             <div class="modal-body relative p-4 ">
                 <table
-                    class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700 overflow-y-scroll">
+                    class="display" id="example" >
                     <thead class="bg-gray-100 dark:bg-gray-700">
                         <tr>
                             <th scope="col"
