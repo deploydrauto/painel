@@ -347,7 +347,8 @@ selectElement.addEventListener('change', (event) => {
                             <p>Email: ${client.email}</p>
                             <p>Telefone: ${client.telefone}</p>
                             <p>Ativação:${client.data_atv}</p>
-                            <p>Meio:${client.meio}</p></a></td>
+                            <p>Meio:${client.meio}</p></a>
+                            </td>
                         <td onClick="showEditClient(${client.id})" class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.name}</td>
                         <td onClick="showEditClient(${client.id})" class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.inicio}</td>
                         <td onClick="showEditClient(${client.id})"class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.termino}</td>
