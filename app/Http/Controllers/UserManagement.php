@@ -110,7 +110,11 @@ class UserManagement extends Controller
             ->where('id_user', $id)
             ->select('client_bots.*', 'game_bots.name')
             ->get();
+        foreach($usuario as $key => $value){
+            $usuario[$key]->inicio = $value->inicio == null ? null : carbon::parse($value->inicio)->format('d/m/Y');
+            $usuario[$key]->termino = $value->termino == null ? null : carbon::parse($value->termino)->format('d/m/Y');
 
+        }
         return $usuario;
 
     }
@@ -252,6 +256,6 @@ class UserManagement extends Controller
 
         return $array;
     }
-   
+
 
 }
