@@ -267,6 +267,11 @@ selectElement.addEventListener('change', (event) => {
                 },
             },
             success: function(data) {
+                $('#example').DataTable().clear().destroy();
+
+//Create new Datatable
+$('#example').DataTable({...})
+
                 fetchUserClients(form.user_id.value);
                 alert('Cliente cadastrado com sucesso');
                 form.reset();
@@ -685,6 +690,12 @@ selectElement.addEventListener('change', (event) => {
                 },
             },
             success: function(data) {
+
+                $('#example').DataTable().clear().destroy();
+
+                //Create new Datatable
+                $('#example').DataTable({...})
+
                 fetchUserClients(id_user);
                 fetchGamesUser(id_user);
                 fetchNoGameBots(id_user);
