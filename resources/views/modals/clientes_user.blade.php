@@ -35,7 +35,6 @@
                         <tr>
                     </thead>
                     <tbody  id="user-clients-table">
-
                     </tbody>
                 </table>
             </div>
@@ -43,6 +42,7 @@
     </div>
 </div>
 
+{{--
 
 
 
