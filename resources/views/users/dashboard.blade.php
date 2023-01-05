@@ -367,28 +367,28 @@ selectElement.addEventListener('change', (event) => {
         document.getElementById('user_id').value = id;
 
         fetchNoGameBots(id)
-        fetch('/user/gamesuser/' + id)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                let table = document.getElementById('games-user-table');
-                table.innerHTML = '';
-                data.forEach(game => {
-                    console.log(game);
-                    let row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${game.id}</td>
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${game.name}</td>
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${game.url}</td>
+        // fetch('/user/gamesuser/' + id)
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         let table = document.getElementById('games-user-table');
+        //         table.innerHTML = '';
+        //         data.forEach(game => {
+        //             console.log(game);
+        //             let row = document.createElement('tr');
+        //             row.innerHTML = `
+        //                 <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${game.id}</td>
+        //                 <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${game.name}</td>
+        //                 <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${game.url}</td>
 
-                        <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                            @can('admin')
-                            <button  onClick="deleteGameUser(${game.id})" >Delete</button></td>
-                            @endcan
-                    `;
-                    table.appendChild(row);
-                });
-            });
+        //                 <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+        //                     @can('admin')
+        //                     <button  onClick="deleteGameUser(${game.id})" >Delete</button></td>
+        //                     @endcan
+        //             `;
+        //             table.appendChild(row);
+        //         });
+        //     });
     }
 
     function deleteGameUser(id) {
