@@ -5,6 +5,9 @@
         </h2>
     </x-slot>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -99,6 +102,34 @@
 </x-app-layout>
 
 <script>
+$(document).ready(function () {
+    $('#example').DataTable({
+        lengthMenu: [
+            [5 , 10, 25, 50,100,1000, -1],
+            [5 ,10, 25, 50, 100,1000, 'All'],
+        ],
+    });
+});
+const selectElement = document.querySelector('.ice-cream');
+
+selectElement.addEventListener('change', (event) => {
+
+    if ( event.target.value == 5) {
+            // show plan_custom
+            console.log("selecionado")
+            document.querySelector('.divteste').classList.remove('hidden')
+        } else {
+            // hide plan_custom
+            document.querySelector('.divteste').classList.add('hidden')
+        }
+//   const result = document.querySelector('.result');
+//   result.textContent = `You like ${event.target.value}`;
+});
+
+
+
+
+
     function loadModal() {
         // showModal('user_add')
         console.log(document.querySelectorAll('user_add'))

@@ -223,31 +223,30 @@
                 let table = document.getElementById('user-clients-table');
                 table.innerHTML = '';
                 console.log(data);
+               var t =  $('#example').DataTable();
+
                 data.forEach(client => {
                     let row = document.createElement('tr');
-                    row.innerHTML = `
-                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                    <p>Nome: ${client.nome}</p>
-                    <p>Email: ${client.email}</p>
-                    <p>Telefone: ${client.telefone}</p>
-                    <p>Ativação:${client.data_atv}</p>
-                    <p>Meio:${client.meio}</p></td>
-                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.name}</td>
-                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.inicio}</td>
-                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">${client.termino}</td>
-                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                    ${client.status == 1 ? '<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Ativo</button>':'<button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Desativado</button>'}
-                </td>
-                <td  class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="deleteClient(${client.id})">
+                    t.row.add([`<a class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5"
+                        data-bs-toggle="offcanvas" href="#offcanvascliente" role="button" onClick="showEditClient(${client.id})"
+                        aria-controls="clientEdit">
+                            <p>Nome: ${client.nome}</p>
+                            <p>Email: ${client.email}</p>
+                            <p>Telefone: ${client.telefone}</p>
+                            <p>Ativação:${client.data_atv}</p>
+                            <p>Meio:${client.meio}</p></a>`,
+
+                            client.name,
+                            client.inicio,
+                            client.termino,
+                            client.status == 1 ? '<button class="bg-green-500 hover:bg-green-700  text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Ativo</button>':'<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Desativado</button>',
+                            `<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="deleteClient(${client.id})">
                         <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
-                    </button>
-                    </td>
+                    </button>`]).draw(false);
 
-`;
-                    table.appendChild(row);
+
                 });
             });
     }
