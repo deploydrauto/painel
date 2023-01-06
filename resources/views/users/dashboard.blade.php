@@ -363,7 +363,7 @@ $('#example').DataTable();
                             client.inicio,
                             client.termino,
                             client.status == 1 ? '<button class="bg-green-500 hover:bg-green-700  text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Ativo</button>':'<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Desativado</button>',
-                            `<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="deleteClient(${client.id})">
+                            `<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded deletebutton" onclick="deleteClient(${client.id})">
                         <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
@@ -670,6 +670,16 @@ $('#example').DataTable();
             }
         });
     }
+
+    var table = $('#example').DataTable();
+
+        $('#example tbody').on( 'click', '.deletebutton', function () {
+            table
+                .row( $(this).parents('tr') )
+                .remove()
+                .draw();
+        } );
+
     function deleteClient(id) {
         let id_user = +document.getElementById('user_id').value
 
@@ -691,16 +701,16 @@ $('#example').DataTable();
             },
             success: function(data) {
 
-                $('#example').DataTable().clear().destroy();
+                // $('#example').DataTable().clear().destroy();
 
-                //Create new Datatable
-                $('#example').DataTable();
+                // //Create new Datatable
+                // $('#example').DataTable();
 
-                fetchUserClients(id_user);
-                fetchGamesUser(id_user);
-                fetchNoGameBots(id_user);
-                alert('Cliente apagado com sucesso');
-                location.reload();
+                // fetchUserClients(id_user);
+                // fetchGamesUser(id_user);
+                // fetchNoGameBots(id_user);
+                // alert('Cliente apagado com sucesso');
+                // location.reload();
 
             }
         });

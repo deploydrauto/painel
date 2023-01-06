@@ -113,7 +113,7 @@ class UserManagement extends Controller
         foreach($usuario as $key => $value){
             $usuario[$key]->inicio = $value->inicio == null ? null : carbon::parse($value->inicio)->format('d/m/Y');
             $usuario[$key]->termino = $value->termino == null ? null : carbon::parse($value->termino)->format('d/m/Y');
-
+            $usuario[$key]->plano = plans::find($value->plano_id)->description;
         }
         return $usuario;
 
