@@ -122,7 +122,9 @@
             [5 , 10, 25, 50,100,1000, -1],
             [5 ,10, 25, 50, 100,1000, 'All'],
         ],
-        paging: false
+        paging: false,
+        stateSave: true,
+    "bDestroy": true
     });
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
