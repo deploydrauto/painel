@@ -126,6 +126,23 @@
         stateSave: true,
     "bDestroy": true
     });
+
+    const selectElement = document.querySelector('.ice-cream');
+
+selectElement.addEventListener('change', (event) => {
+
+    if ( event.target.value == 5) {
+            // show plan_custom
+            console.log("selecionado")
+            document.querySelector('.divteste').classList.remove('hidden')
+        } else {
+            // hide plan_custom
+            document.querySelector('.divteste').classList.add('hidden')
+        }
+//   const result = document.querySelector('.result');
+//   result.textContent = `You like ${event.target.value}`;
+});
+
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
       type: 'bar',
@@ -164,21 +181,7 @@
     });
     Chart.defaults.color = "#ffffff";
 });
- const selectElement = document.querySelector('.ice-cream');
 
-selectElement.addEventListener('change', (event) => {
-
-    if ( event.target.value == 5) {
-            // show plan_custom
-            console.log("selecionado")
-            document.querySelector('.divteste').classList.remove('hidden')
-        } else {
-            // hide plan_custom
-            document.querySelector('.divteste').classList.add('hidden')
-        }
-//   const result = document.querySelector('.result');
-//   result.textContent = `You like ${event.target.value}`;
-});
 
 
 
