@@ -5,8 +5,7 @@
         </h2>
     </x-slot>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -113,21 +112,25 @@
     </div>
 </x-app-layout>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const ctx = document.getElementById('myChart');
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
+<script>
+    $(document).ready(function () {
+    $('#example').DataTable({
+        lengthMenu: [
+            [5 , 10, 25, 50,100,1000, -1],
+            [5 ,10, 25, 50, 100,1000, 'All'],
+        ],
+        paging: false
+    });
+    const ctx = document.getElementById('myChart');
     new Chart(ctx, {
       type: 'bar',
       data: {
         labels: {!!json_encode($graphic_label, JSON_UNESCAPED_UNICODE)!!},
         datasets: [
-        //     {
-        //   label: 'Usuarios Por Bot',
-        //   color: 'blue',
-        //   backgroundColor: 'blue',
-        //   data: {!!  json_encode($graphic_value, JSON_UNESCAPED_UNICODE)!!},
-        //   borderWidth: 1
-        // },
+
         {
           label: 'Usuarios Ativos por Bot',
           color: 'green',
@@ -158,15 +161,6 @@
       }
     });
     Chart.defaults.color = "#ffffff";
-  </script>
-<script>
-    $(document).ready(function () {
-    $('#example').DataTable({
-        lengthMenu: [
-            [5 , 10, 25, 50,100,1000, -1],
-            [5 ,10, 25, 50, 100,1000, 'All'],
-        ],
-    });
 });
  const selectElement = document.querySelector('.ice-cream');
 
