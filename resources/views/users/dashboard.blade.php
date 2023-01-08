@@ -368,6 +368,7 @@ $('#example').DataTable();
 
 
                 });
+                document.querySelector("#active").classList.add('hidden')
             });
     }
 

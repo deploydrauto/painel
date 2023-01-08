@@ -19,9 +19,17 @@
                 @include('modals.client_edit')
                 <button type="button"
                     class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                    data-bs-dismiss="modal" aria-label="Close"></button>
+                    data-bs-dismiss="modal" aria-label="Close">
+                </button>
             </div>
             <div class="modal-body relative p-4 ">
+
+            <button  id="active" type="button" class="bg-indigo-500 ..." disabled>
+                <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+                    <!-- ... -->
+                </svg>
+                Carregando...
+                </button>
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
