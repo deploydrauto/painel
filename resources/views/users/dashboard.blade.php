@@ -257,11 +257,8 @@ selectElement.addEventListener('change', (event) => {
                     testedays: form.testedays.value,
                 },
             },
-            success: function(data) {
-                $('#example').DataTable().clear().destroy();
- 
-            $('#example').DataTable();
-                form.reset();
+            success: function(data) {             
+                 form.reset();
                 location.reload();
             }
         }); }
