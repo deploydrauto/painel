@@ -41,6 +41,7 @@
                             <th>Dados</th>
                             <th>Game BOT</th>
                             <th>Inicio</th>
+                            <th>Plano</th>
                             <th>termino</th>
                             <th>status</th>
                             <th>Apagar</th>
@@ -53,6 +54,7 @@
                         <tr>
                             <th>Dados</th>
                             <th>Game BOT</th>
+                            <th>Plano</th>
                             <th>Inicio</th>
                             <th>termino</th>
                             <th>status</th>

@@ -356,6 +356,7 @@ selectElement.addEventListener('change', (event) => {
                             <p>Meio:${client.meio}</p></a>`,
 
                             client.name,
+                            client.plano,
                             client.inicio,
                             client.termino,
                             client.status == 1 ? '<button id="button_'+client.id+'" class="bg-green-500 hover:bg-green-700  text-white font-bold py-2 px-4 rounded" onClick="desativarCliente('+client.id+')">Ativo</button>':'<button id="button_'+client.id+'"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick="ativarCliente('+client.id+')">Desativado</button>',
