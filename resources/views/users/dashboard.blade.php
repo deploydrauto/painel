@@ -462,8 +462,8 @@ selectElement.addEventListener('change', (event) => {
         let btnid = '#button_'+id;
         let desative = document.querySelector(btnid);
         desative.onclick = 'ativarCliente('+id+')';
-        desative.classList.remove('bg-green-500','hover:bg-green-700');
-        desative.classList.add('bg-red-500','hover:bg-red-700');
+        desative.classList.remove('bg-green-500');
+        desative.classList.add('bg-red-500');
         desative.innerHTML = 'Desativado';
         $.ajax({
             url: '/cliente/desativar/' + id,
