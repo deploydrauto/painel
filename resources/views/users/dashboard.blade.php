@@ -433,7 +433,7 @@ selectElement.addEventListener('change', (event) => {
         let desative = document.querySelector(btnid);
         desative.onclick = 'desativarCliente('+id+')';
         desative.classList.remove('bg-red-500','hover:bg-red-700');
-        desative.classList.add('bg-green-500','hover:bg-green-700 ');
+        desative.classList.add('bg-green-500');
         desative.innerHTML = 'Ativo';
         
         $.ajax({
