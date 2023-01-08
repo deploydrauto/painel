@@ -431,7 +431,7 @@ selectElement.addEventListener('change', (event) => {
         let id_user = +document.getElementById('user_id').value
         let btnid = '#button_'+id;
         let desative = document.querySelector(btnid);
-        desative.onclick = 'desativarCliente('+id+')';
+        desative.onclick =  function () { desativarCliente(id); };  
         desative.classList.remove('bg-red-500','hover:bg-red-700');
         desative.classList.add('bg-green-500');
         desative.innerHTML = 'Ativo';
@@ -461,7 +461,7 @@ selectElement.addEventListener('change', (event) => {
         let id_user = +document.getElementById('user_id').value
         let btnid = '#button_'+id;
         let desative = document.querySelector(btnid);
-        desative.onclick = 'ativarCliente('+id+')';
+        desative.onclick = function () { ativarCliente(id); }; 
         desative.classList.remove('bg-green-500');
         desative.classList.add('bg-red-500');
         desative.innerHTML = 'Desativado';
