@@ -435,8 +435,7 @@ selectElement.addEventListener('change', (event) => {
         desative.classlist.remove('bg-red-500 hover:bg-red-700');
         desative.classlist.add('bg-green-500 hover:bg-green-700 ');
         desative.innerHTML = 'Ativo';
-         '<button id="button_'+id+'" class=" text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Ativo</button>':'<button id="button_'+client.id+'"  class=" text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Desativado</button>',
-
+        
         $.ajax({
             url: '/cliente/ativar/' + id,
             type: "POST",
