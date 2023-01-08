@@ -429,11 +429,11 @@ selectElement.addEventListener('change', (event) => {
     }
     function ativarCliente(id) {
         let id_user = +document.getElementById('user_id').value
-        let btnid = 'button_'+id;
-        let desative = document.getElementById(btnid);
+        let btnid = '#button_'+id;
+        let desative = document.querySelector(btnid);
         desative.onclick = 'desativarCliente('+id+')';
-        desative.classlist.remove('bg-red-500 hover:bg-red-700');
-        desative.classlist.add('bg-green-500 hover:bg-green-700 ');
+        desative.classList.remove('bg-red-500 hover:bg-red-700');
+        desative.classList.add('bg-green-500 hover:bg-green-700 ');
         desative.innerHTML = 'Ativo';
         
         $.ajax({
@@ -453,20 +453,17 @@ selectElement.addEventListener('change', (event) => {
                 },
             },
             success: function(data) {
-                fetchUserClients(id_user);
-                // fetchNoGameBots(id_user);
-                alert('Cliente Ativado');
-
+                 
             }
         });
     }
     function desativarCliente(id) {
         let id_user = +document.getElementById('user_id').value
-        let btnid = 'button_'+id;
-        let desative = document.getElementById(btnid);
+        let btnid = '#button_'+id;
+        let desative = document.querySelector(btnid);
         desative.onclick = 'ativarCliente('+id+')';
-        desative.classlist.remove('bg-green-500 hover:bg-green-700');
-        desative.classlist.add('bg-red-500 hover:bg-red-700');
+        desative.classList.remove('bg-green-500 hover:bg-green-700');
+        desative.classList.add('bg-red-500 hover:bg-red-700');
         desative.innerHTML = 'Desativado';
         $.ajax({
             url: '/cliente/desativar/' + id,
@@ -485,9 +482,7 @@ selectElement.addEventListener('change', (event) => {
                 },
             },
             success: function(data) {
-                fetchUserClients(id_user);
-                // fetchNoGameBots(id_user);
-                alert('Cliente Desativado');
+                 
 
             }
         });
