@@ -259,14 +259,10 @@ selectElement.addEventListener('change', (event) => {
             },
             success: function(data) {
                 $('#example').DataTable().clear().destroy();
-
-//Create new Datatable
-$('#example').DataTable();
-
-                fetchUserClients(form.user_id.value);
-                alert('Cliente cadastrado com sucesso');
+ 
+            $('#example').DataTable();
                 form.reset();
-                hideModal('client');
+                location.reload();
             }
         }); }
         else {
@@ -300,10 +296,9 @@ $('#example').DataTable();
                 },
             },
             success: function(data) {
-                fetchUserClients(form.user_id.value);
-                alert('Cliente editado com sucesso');
+                 
                 form.reset();
-                hideModal('client');
+                location.reload();
             }
         });
 
@@ -366,7 +361,7 @@ $('#example').DataTable();
                             client.name,
                             client.inicio,
                             client.termino,
-                            client.status == 1 ? '<button class="bg-green-500 hover:bg-green-700  text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Ativo</button>':'<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Desativado</button>',
+                            client.status == 1 ? '<button id="button_'+client.id+'" class="bg-green-500 hover:bg-green-700  text-white font-bold py-2 px-4 rounded" onClick="desativarCliente('+client.id+')">Ativo</button>':'<button id="button_'+client.id+'"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick="ativarCliente('+client.id+')">Desativado</button>',
                             `<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded deletebutton" onclick="deleteClient(${client.id})">
                         <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path d="M6 18L18 6M6 6l12 12"></path>
@@ -434,6 +429,13 @@ $('#example').DataTable();
     }
     function ativarCliente(id) {
         let id_user = +document.getElementById('user_id').value
+        let btnid = 'button_'+id;
+        let desative = document.getElementById(btnid);
+        desative.onclick = 'desativarCliente('+id+')';
+        desative.classlist.remove('bg-red-500 hover:bg-red-700');
+        desative.classlist.add('bg-green-500 hover:bg-green-700 ');
+        desative.innerHTML = 'Ativo';
+         '<button id="button_'+id+'" class=" text-white font-bold py-2 px-4 rounded" onclick="desativarCliente('+client.id+')">Ativo</button>':'<button id="button_'+client.id+'"  class=" text-white font-bold py-2 px-4 rounded" onclick="ativarCliente('+client.id+')">Desativado</button>',
 
         $.ajax({
             url: '/cliente/ativar/' + id,
@@ -461,7 +463,12 @@ $('#example').DataTable();
     }
     function desativarCliente(id) {
         let id_user = +document.getElementById('user_id').value
-
+        let btnid = 'button_'+id;
+        let desative = document.getElementById(btnid);
+        desative.onclick = 'ativarCliente('+id+')';
+        desative.classlist.remove('bg-green-500 hover:bg-green-700');
+        desative.classlist.add('bg-red-500 hover:bg-red-700');
+        desative.innerHTML = 'Desativado';
         $.ajax({
             url: '/cliente/desativar/' + id,
             type: "POST",
