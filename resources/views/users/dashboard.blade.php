@@ -345,6 +345,13 @@ $('#example').DataTable();
                     stateSave: true,
                     "bDestroy": true
                     });
+                $('#example tbody').on( 'click', '.deletebutton', function () {
+                    t 
+                        .row( $(this).parents('tr') )
+                        .remove()
+                        .draw();
+                } );
+
                  data.forEach(client => {
                     let row = document.createElement('tr');
                     t.row.add([`<a class="inline-block px-4 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5"
@@ -422,10 +429,6 @@ $('#example').DataTable();
                 },
             },
             success: function(data) {
-                fetchGamesUser(id_user);
-                fetchNoGameBots(id_user);
-                // alert('Cliente cadastrado com sucesso');
-
             }
         });
     }
@@ -669,15 +672,6 @@ $('#example').DataTable();
         });
     }
 
-    var table = $('#example').DataTable();
-
-        $('#example tbody').on( 'click', '.deletebutton', function () {
-            table
-                .row( $(this).parents('tr') )
-                .remove()
-                .draw();
-        } );
-
     function deleteClient(id) {
         let id_user = +document.getElementById('user_id').value
 
@@ -699,17 +693,7 @@ $('#example').DataTable();
             },
             success: function(data) {
 
-                // $('#example').DataTable().clear().destroy();
-
-                // //Create new Datatable
-                // $('#example').DataTable();
-
-                // fetchUserClients(id_user);
-                // fetchGamesUser(id_user);
-                // fetchNoGameBots(id_user);
-                // alert('Cliente apagado com sucesso');
-                // location.reload();
-
+                
             }
         });
     }
