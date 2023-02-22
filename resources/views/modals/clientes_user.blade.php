@@ -1,11 +1,11 @@
 <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-    id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
+    id="ModalClientes" tabindex="-1" aria-labelledby="ModalClientesLabel" aria-modal="true" role="dialog">
     <div class="modal-dialog  modal-dialog-scrollable modal-xl relative w-auto pointer-events-none">
         <div
             class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
             <div
                 class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-                <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalXlLabel">
+                <h5 class="text-xl font-medium leading-normal text-gray-800" id="ModalClientesLabel">
                     CLientes do Usuario
                 </h5>
                 <div class="self-end">
@@ -25,7 +25,7 @@
             <div class="modal-body relative p-4 ">
             <div class="text-center">
             <button  id="active" type="button" class="bg-indigo-500 ..." disabled>
-                Carregando 
+                Carregando
                         <div role="status">
                 <svg aria-hidden="true" class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>

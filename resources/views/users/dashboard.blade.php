@@ -5,6 +5,10 @@
         </h2>
     </x-slot>
 
+    @include('modals.user_add')
+    @include('modals.clientes_user')
+    @include('modals.games_user')
+    @include('modals.webhooks_user')
 
 
     <div class="py-12">
@@ -58,8 +62,13 @@
                                                             class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                                             <p>
                                                                 <button
-                                                                  data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModalXl"
+
+
+
+
+
+                                                                     data-bs-toggle="modal"
+                                                                    data-bs-target="#ModalClientes"
                                                                     onClick="fetchUserClients('{{ $user->id }}')" class="mt-1">
                                                                     Clientes: T:{{ $user->clientes }} A:  {{ $user->ativos }}  I:  {{ $user->inativos }}
                                                                 </button>
@@ -99,10 +108,6 @@
 
                     </div>
 
-                    @include('modals.user_add')
-                    @include('modals.clientes_user')
-                    @include('modals.games_user')
-                    @include('modals.webhooks_user')
 
 
 
