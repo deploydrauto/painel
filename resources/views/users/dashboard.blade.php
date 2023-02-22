@@ -322,7 +322,7 @@ selectElement.addEventListener('change', (event) => {
     function fetchUserClients(id) {
 
         document.getElementById('user_id').value = id;
-
+        console.log("teste")
         fetch('/users/clientes/' + id)
             .then(response => response.json())
             .then(data => {
