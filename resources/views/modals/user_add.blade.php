@@ -55,7 +55,7 @@
                               ease-in-out
                               m-0
                               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                            id="exampleInput125" id="email" name="email" placeholder="Email address">
+                             id="email" name="email" placeholder="Email address">
                     </div>
                     <div class="form-group mb-6">
                         <input type="password"
@@ -120,7 +120,7 @@
                             ease-in-out">Cadastrar</button>
                 </form>
             </div>
- 
+
         </div>
     </div>
 </div>
