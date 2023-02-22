@@ -117,12 +117,53 @@
             </div>
         </div>
     </div>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded modal-open">
+        Abrir modal
+      </button>
+
+      <div class="fixed z-10 inset-0 overflow-y-auto hidden modal">
+        <div class="flex items-center justify-center min-h-screen">
+          <div class="bg-white rounded-lg p-8">
+            <p>Conteúdo do modal aqui</p>
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded modal-close">
+              Fechar modal
+            </button>
+          </div>
+        </div>
+      </div>
+
 </x-app-layout>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
 <script>
+
+const openModalButtons = document.querySelectorAll('.modal-open');
+const closeModalButtons = document.querySelectorAll('.modal-close');
+const modal = document.querySelector('.modal');
+
+// Função para abrir o modal
+function openModal() {
+  modal.classList.add('modal-active');
+}
+
+// Função para fechar o modal
+function closeModal() {
+  modal.classList.remove('modal-active');
+}
+
+// Adicionar evento de clique para abrir o modal
+openModalButtons.forEach(button => {
+  button.addEventListener('click', openModal);
+});
+
+// Adicionar evento de clique para fechar o modal
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', closeModal);
+});
+
+
     $(document).ready(function () {
 
 
