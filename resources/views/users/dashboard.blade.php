@@ -59,7 +59,7 @@
                                                             <p>
                                                                 <x-primary-button data-bs-toggle="modal"
                                                                     data-bs-target="#exampleModalXl"
-                                                                    onClick="fetchUserClients('{{ $user->id }}'')" class="mt-1">
+                                                                    onClick="fetchUserClients('{{ $user->id }}')" class="mt-1">
                                                                     Clientes: T:{{ $user->clientes }} A:  {{ $user->ativos }}  I:  {{ $user->inativos }}
                                                                 </x-primary-button>
 
