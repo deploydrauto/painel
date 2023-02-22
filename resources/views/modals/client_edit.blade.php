@@ -35,7 +35,7 @@
                                 ease-in-out
                                 m-0
                                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                id="nome_" name="nome" aria-describedby="emailHelp123" placeholder="First name">
+                                id="edit_client_nome" name="edit_client_nome" aria-describedby="emailHelp123" placeholder="First name">
                         </div>
 
                     </div>
@@ -55,7 +55,7 @@
                               ease-in-out
                               m-0
                               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                           id="email_" name="email_" placeholder="Email address">
+                           id="edit_cliente_email" name="edit_cliente_email" placeholder="Email address">
                     </div>
                     <div class="form-group mb-6">
                         <input type="telefone"
