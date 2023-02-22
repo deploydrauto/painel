@@ -35,7 +35,7 @@
                                 ease-in-out
                                 m-0
                                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                id="cliente_nome" name="cliente_nome" aria-describedby="emailHelp123" placeholder="First name">
+                                id="cliente_nome" name="cliente_nome"   placeholder="First name">
                         </div>
 
                     </div>
