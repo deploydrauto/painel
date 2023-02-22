@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\user_games;
 use App\Http\Controllers\UserManagement as UserManagement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as auth;
 
 class DashboardController extends Controller
 {

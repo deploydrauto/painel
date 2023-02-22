@@ -59,7 +59,7 @@
                                                             <p>
                                                                 <x-primary-button data-bs-toggle="modal"
                                                                     data-bs-target="#exampleModalXl"
-                                                                    onClick="fetchUserClients({{ $user->id }})" class="mt-1">
+                                                                    onClick="fetchUserClients('{{ $user->id }}'')" class="mt-1">
                                                                     Clientes: T:{{ $user->clientes }} A:  {{ $user->ativos }}  I:  {{ $user->inativos }}
                                                                 </x-primary-button>
 
@@ -117,7 +117,7 @@
 
 <script>
     $(document).ready(function () {
-    
+
 
     const selectElement = document.querySelector('.ice-cream');
 
@@ -257,7 +257,7 @@ selectElement.addEventListener('change', (event) => {
                     testedays: form.testedays.value,
                 },
             },
-            success: function(data) {             
+            success: function(data) {
                  form.reset();
                 location.reload();
             }
@@ -293,7 +293,7 @@ selectElement.addEventListener('change', (event) => {
                 },
             },
             success: function(data) {
-                 
+
                 form.reset();
                 location.reload();
             }
@@ -322,7 +322,7 @@ selectElement.addEventListener('change', (event) => {
     function fetchUserClients(id) {
 
         document.getElementById('user_id').value = id;
-        
+
         fetch('/users/clientes/' + id)
             .then(response => response.json())
             .then(data => {
@@ -333,12 +333,12 @@ selectElement.addEventListener('change', (event) => {
                             [5 , 10, 25, 50,100,1000, -1],
                             [5 ,10, 25, 50, 100,1000, 'All'],
                         ],
-                    
+
                     stateSave: true,
                     "bDestroy": true
                     });
                 $('#example tbody').on( 'click', '.deletebutton', function () {
-                    t 
+                    t
                         .row( $(this).parents('tr') )
                         .remove()
                         .draw();
@@ -429,11 +429,11 @@ selectElement.addEventListener('change', (event) => {
         let id_user = +document.getElementById('user_id').value
         let btnid = '#button_'+id;
         let desative = document.querySelector(btnid);
-        desative.onclick =  function () { desativarCliente(id); };  
+        desative.onclick =  function () { desativarCliente(id); };
         desative.classList.remove('bg-red-500','hover:bg-red-700');
         desative.classList.add('bg-green-500');
         desative.innerHTML = 'Ativo';
-        
+
         $.ajax({
             url: '/cliente/ativar/' + id,
             type: "POST",
@@ -451,7 +451,7 @@ selectElement.addEventListener('change', (event) => {
                 },
             },
             success: function(data) {
-                 
+
             }
         });
     }
@@ -459,7 +459,7 @@ selectElement.addEventListener('change', (event) => {
         let id_user = +document.getElementById('user_id').value
         let btnid = '#button_'+id;
         let desative = document.querySelector(btnid);
-        desative.onclick = function () { ativarCliente(id); }; 
+        desative.onclick = function () { ativarCliente(id); };
         desative.classList.remove('bg-green-500');
         desative.classList.add('bg-red-500');
         desative.innerHTML = 'Desativado';
@@ -480,7 +480,7 @@ selectElement.addEventListener('change', (event) => {
                 },
             },
             success: function(data) {
-                 
+
 
             }
         });
@@ -692,7 +692,7 @@ selectElement.addEventListener('change', (event) => {
             },
             success: function(data) {
 
-                
+
             }
         });
     }
