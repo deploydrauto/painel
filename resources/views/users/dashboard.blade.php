@@ -5,10 +5,6 @@
         </h2>
     </x-slot>
 
-    @include('modals.user_add')
-    @include('modals.clientes_user')
-    @include('modals.games_user')
-    @include('modals.webhooks_user')
 
 
     <div class="py-12">
@@ -119,6 +115,10 @@
     </div>
 
 
+    @include('modals.user_add')
+    @include('modals.clientes_user')
+    @include('modals.games_user')
+    @include('modals.webhooks_user')
 </x-app-layout>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
