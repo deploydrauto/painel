@@ -327,7 +327,9 @@ selectElement.addEventListener('change', (event) => {
             .then(response => response.json())
             .then(data => {
                 let table = document.getElementById('user-clients-table');
-                table.innerHTML = '';
+                // clear table
+
+
                 var t =  $('#example').DataTable({
                         lengthMenu: [
                             [5 , 10, 25, 50,100,1000, -1],
@@ -383,7 +385,6 @@ selectElement.addEventListener('change', (event) => {
             .then(data => {
                 console.log(data);
                 let table = document.getElementById('games-user-table');
-                table.innerHTML = '';
                 data.forEach(game => {
                     console.log(game);
                     let row = document.createElement('tr');
@@ -526,7 +527,6 @@ selectElement.addEventListener('change', (event) => {
                 console.log(data.length)
                 // add options to game_no_have select
                 let select = document.getElementById('game_no_have');
-                select.innerHTML = '';
                 if (data.length == 0) {
                     let option = document.createElement('option');
                     option.value = '';
@@ -561,7 +561,6 @@ selectElement.addEventListener('change', (event) => {
                 console.log(data);
 
                 let table = document.getElementById('webhooks-table');
-                table.innerHTML = '';
                 data.forEach(webhook => {
                     console.log(webhook);
                     let row = document.createElement('tr');
@@ -621,7 +620,6 @@ selectElement.addEventListener('change', (event) => {
                 console.log(data);
                 document.getElementById('user_id').value = id;
                 let select = document.getElementById('games_list');
-                select.innerHTML = '';
                 if (data.length == 0) {
                     let option = document.createElement('option');
                     option.value = '';
