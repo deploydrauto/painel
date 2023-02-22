@@ -57,24 +57,26 @@
                                                         <td
                                                             class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                                             <p>
-                                                                <x-primary-button data-bs-toggle="modal"
+                                                                <button
+                                                                  data-bs-toggle="modal"
                                                                     data-bs-target="#exampleModalXl"
                                                                     onClick="fetchUserClients('{{ $user->id }}')" class="mt-1">
                                                                     Clientes: T:{{ $user->clientes }} A:  {{ $user->ativos }}  I:  {{ $user->inativos }}
-                                                                </x-primary-button>
+                                                                </button>
 
                                                             </p>
                                                             <p>
-                                                                <x-primary-button class="mt-1" data-bs-toggle="modal"
+                                                                <button
+                                                                   class="mt-1" data-bs-toggle="modal"
                                                                     data-bs-target="#users_games"
                                                                     onClick="fetchGamesUser({{ $user->id }})"> Games :
                                                                     {{ $user->games }}
-                                                                </x-primary-button>
+                                                                </button>
                                                             </p>
                                                             <p>
-                                                                <x-primary-button class="mt-1"   data-bs-toggle="modal"
+                                                                <button class="mt-1"   data-bs-toggle="modal"
                                                                 data-bs-target="#webhooks_modal" onclick="fetchWebhooksUser({{ $user->id }})"> WebHooks : {{ $user->webhooks }}
-                                                                </x-primary-button>
+                                                                </button>
                                                             </p>
 
                                                         </td>
