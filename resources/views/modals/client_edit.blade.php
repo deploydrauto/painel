@@ -55,7 +55,7 @@
                               ease-in-out
                               m-0
                               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                            id="exampleInput125" id="email_" name="email_" placeholder="Email address">
+                           id="email_" name="email_" placeholder="Email address">
                     </div>
                     <div class="form-group mb-6">
                         <input type="telefone"
@@ -73,7 +73,7 @@
                               ease-in-out
                               m-0
                               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                            id="exampleInput125" id="telefone_" name="telefone" placeholder="Telefone address">
+                             id="telefone_" name="telefone" placeholder="Telefone address">
                     </div>
                     <div class="datepicker relative form-floating form-group mb-6" data-mdb-toggle-button="false">
                         <input type="text"
