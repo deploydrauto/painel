@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\client_bots;
 use App\Models\game_bots;
+use App\Models\historico_clientes;
 use App\Models\plans;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -304,10 +305,23 @@ class WebhooksController extends Controller
     }
     public static function removeAcesso($game_id, $iduser, $email)
     {
+        // add to historico
+        $historico = new historico_clientes();
+        $historico->info = $email;
+        $historico->plano_id = 0;
+        $historico->inicio = date('Y-m-d H:i:s');
+        $historico->termino = date('Y-m-d H:i:s');
+        $historico->created_at = date('Y-m-d H:i:s');
+        $historico->updated_at = date('Y-m-d H:i:s');
+        $historico->save();
+         
+
         $client = client_bots::where('email', $email)->where('game_id', $game_id)->where('id_user', $iduser)->first();
         $client->status = 0;
         $client->remain = 0;
         $client->save();
+
+
         //TODO: Salvar em um historico do usuario
     }
 }

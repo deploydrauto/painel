@@ -17,25 +17,28 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
- */
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+*/
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
-Route::resource('games', GameBotsController::class)
-    ->only(['index', 'store'])
-    ->middleware(['auth', 'verified' , 'can:admin']);
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('clientes', ClientBotsController::class)
-    ->only(['index', 'store'])
-    ->middleware(['auth', 'verified']);
 Route::middleware('auth')->group(function () {
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/meus_clientes/{id}', [DashboardController::class, 'get_meus_clientes'])->name('dashboard.data');
+    Route::get('/users/clientes/{id}', [UserManagement::class, 'clientes'])->name('users.clientes');
+
 
     Route::get('/users', [UserManagement::class, 'index'])->middleware('can:admin')->name('users.index');
     Route::post('/users', [UserManagement::class, 'store'])->name('users.store');
@@ -44,7 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/users/update/{id}', [UserManagement::class, 'update'])->name('users.update');
     Route::post('/users/delete/{id}', [UserManagement::class, 'delete'])->name('users.delete');
     Route::get('/users/games/{id}', [UserManagement::class, 'destroy'])->name('users.destroy');
-    Route::get('/users/clientes/{id}', [UserManagement::class, 'clientes'])->name('users.clientes');
 
     Route::get('/user/bots/{id}', [UserManagement::class, 'games'])->middleware('can:admin')->name('user.bots');
     Route::get('/user/nogameuser/{id}', [UserManagement::class, 'getGamesofUserNoHave'])->name('user.games.nobots');
@@ -69,9 +71,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/edit', [UserManagement::class, 'editUser'])->name('user.edit');
 
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+
+
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Auth::routes();
+// 
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
